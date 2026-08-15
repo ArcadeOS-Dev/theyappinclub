@@ -966,36 +966,46 @@ function dmId(a,b){return[a,b].sort().join("::dm::");}
 function subChannel(ch){
   if(msgsUnsub)msgsUnsub();
   if(!db)return;
+
+  console.log("[TYC] Starting live message listener:",ch);
+
   msgsUnsub=db.collection("messages")
     .where("room","==",ch)
     .orderBy("timestamp","asc")
     .limit(MAX_SHOW)
     .onSnapshot(function(snap){
-      snap.docChanges().forEach(function(c){
-        var d=Object.assign({id:c.doc.id},c.doc.data());
-        var i=allMsgs.findIndex(function(m){return m.id===d.id;});
-        if(c.type==="added"){
-          // If sendMsg() already rendered this message optimistically, replace
-          // the temporary copy with Firestore's authoritative version.
-          if(i>=0){
-            allMsgs[i]=d;
-            refreshMsg(d,i);
-          }else{
-            rendered[d.id]=true;
-            allMsgs.push(d);
-            renderMsg(d,allMsgs.length-1);
-          }
-        }
-        if(c.type==="modified"){
-          if(i>=0){allMsgs[i]=d;refreshMsg(d,i);}
-          else{
-            rendered[d.id]=true;
-            allMsgs.push(d);
-            renderMsg(d,allMsgs.length-1);
-          }
-        }
+      console.log("[TYC] Live update:",ch,"messages:",snap.size);
+
+      /*
+       * Rebuild the visible list from Firestore on every snapshot.
+       * This is deliberately simple and robust: it means additions,
+       * edits, deletes and messages sent by other browsers are always
+       * reflected immediately without relying on docChanges state.
+       */
+      allMsgs=[];
+      rendered={};
+
+      var mc=document.getElementById("mc");
+      if(!mc)return;
+
+      mc.innerHTML='<div class="empty-st" id="es"><div class="esic">chat</div><div class="est">No messages yet</div></div>';
+      mc.dataset.lastDate="";
+
+      snap.forEach(function(doc){
+        var d=Object.assign({id:doc.id},doc.data());
+        allMsgs.push(d);
       });
-    },function(e){console.error("[TYC]",e);});
+
+      allMsgs.forEach(function(d,i){
+        rendered[d.id]=true;
+        renderMsg(d,i);
+      });
+
+      scrollBot();
+    },function(e){
+      console.error("[TYC] FIRESTORE LISTENER ERROR:",e);
+      showNotif("Live chat error: "+(e.code||"check console"),"error");
+    });
 }
 function renderMsg(d,idx,container){
   if(!container)container=document.getElementById("mc");
