@@ -1009,6 +1009,7 @@ function subChannel(ch){
 }
 function renderMsg(d,idx,container){
   if(!container)container=document.getElementById("mc");
+  if(Array.isArray(d.hiddenFor)&&d.hiddenFor.indexOf(usr)>=0)return;
   var es=document.getElementById("es");if(es)es.remove();
   if(d.type==="system"){
     var el=document.createElement("div");el.className="msys";el.id="m-"+d.id;
@@ -1056,9 +1057,10 @@ function renderMsg(d,idx,container){
     wrap.appendChild(meta);
   }
   if(d.deletedForAll){
-    var del=document.createElement("div");del.className="mdel";del.textContent="This message was deleted.";wrap.appendChild(del);
-  }else if(d.hiddenFor&&d.hiddenFor.indexOf(usr)>=0){
-    /* hidden */
+    var del=document.createElement("div");
+    del.className="mdel";
+    del.textContent="this msg has been unalived";
+    wrap.appendChild(del);
   }else{
     var bubble=document.createElement("div");bubble.className="mbub";
     if(d.type==="gif"){
@@ -1080,13 +1082,53 @@ function renderMsg(d,idx,container){
     }
     wrap.appendChild(bubble);
   }
-  var acts=document.createElement("div");acts.className="macts";
-  acts.innerHTML=
-    '<button class="mab" title="Reply" onclick="setReply(getMsgById(\''+d.id+'\'))">Re</button>'+
-    '<button class="mab" title="Pin" onclick="togglePin(\''+d.id+'\')">Pin</button>'+
-    (isOwn&&!d.deletedForAll?'<button class="mab" title="Edit" onclick="startEdit(\''+d.id+'\')">Ed</button>':"")+
-    '<button class="mab" title="More" onclick="showCtx(event,\''+d.id+'\','+isOwn+')">...</button>';
-  row.appendChild(av);row.appendChild(wrap);row.appendChild(acts);
+  var acts=document.createElement("div");
+  acts.className="macts";
+
+  var replyBtn=document.createElement("button");
+  replyBtn.className="mab";
+  replyBtn.title="Reply";
+  replyBtn.textContent="Re";
+  replyBtn.addEventListener("click",function(e){
+    e.stopPropagation();
+    setReply(getMsgById(d.id));
+  });
+  acts.appendChild(replyBtn);
+
+  var pinBtn=document.createElement("button");
+  pinBtn.className="mab";
+  pinBtn.title="Pin";
+  pinBtn.textContent="Pin";
+  pinBtn.addEventListener("click",function(e){
+    e.stopPropagation();
+    togglePin(d.id);
+  });
+  acts.appendChild(pinBtn);
+
+  if(isOwn&&!d.deletedForAll){
+    var editBtn=document.createElement("button");
+    editBtn.className="mab";
+    editBtn.title="Edit";
+    editBtn.textContent="Ed";
+    editBtn.addEventListener("click",function(e){
+      e.stopPropagation();
+      startEdit(d.id);
+    });
+    acts.appendChild(editBtn);
+  }
+
+  var moreBtn=document.createElement("button");
+  moreBtn.className="mab";
+  moreBtn.title="More";
+  moreBtn.textContent="...";
+  moreBtn.addEventListener("click",function(e){
+    showCtx(e,d.id,isOwn);
+  });
+  acts.appendChild(moreBtn);
+
+  row.appendChild(av);
+  row.appendChild(wrap);
+  row.appendChild(acts);
   container.appendChild(row);scrollBot();
   if(d.pinned){
     pinnedId=d.id;
@@ -1157,13 +1199,34 @@ function togglePin(id){
   if(m)db.collection("messages").doc(id).update({pinned:!m.pinned}).catch(function(e){console.error("[TYC] Pin failed:",e);showNotif("Pin failed: "+(e.code||"check console"),"error");});
 }
 function deleteForMe(id){
-  if(!db)return;var m=getMsgById(id);
-  var cur=m&&m.hiddenFor?m.hiddenFor:[];
-  db.collection("messages").doc(id).update({hiddenFor:cur.concat([usr])}).catch(function(e){console.error("[TYC] Delete-for-me failed:",e);showNotif("Delete failed: "+(e.code||"check console"),"error");});
+  if(!db)return;
+  var m=getMsgById(id);
+  if(!m)return;
+  var cur=Array.isArray(m.hiddenFor)?m.hiddenFor.slice():[];
+  if(cur.indexOf(usr)>=0)return;
+
+  // Hide the entire message immediately for this user.
+  // The renderMsg guard removes the row completely.
+  m.hiddenFor=cur.concat([usr]);
+  renderMessages();
+
+  db.collection("messages").doc(id).update({hiddenFor:m.hiddenFor}).catch(function(e){
+    // If Firebase rejects the change, restore the message locally.
+    m.hiddenFor=cur;
+    renderMessages();
+    console.error("[TYC] Delete-for-me failed:",e);
+    showNotif("Delete failed: "+(e.code||"check console"),"error");
+  });
 }
 function deleteForAll(id){
   if(!db)return;
-  db.collection("messages").doc(id).update({deletedForAll:true,text:""}).catch(function(e){console.error("[TYC] Delete-for-all failed:",e);showNotif("Delete failed: "+(e.code||"check console"),"error");});
+  db.collection("messages").doc(id).update({
+    deletedForAll:true,
+    text:""
+  }).catch(function(e){
+    console.error("[TYC] Delete-for-all failed:",e);
+    showNotif("Delete failed: "+(e.code||"check console"),"error");
+  });
 }
 function scrollToPinned(){if(pinnedId){var el=document.getElementById("m-"+pinnedId);if(el)el.scrollIntoView({behavior:"smooth",block:"center"});}}
 function setReply(m){if(!m)return;replyTo=m;showNotif("Replying to "+m.username+"...","info");document.getElementById("mi").focus();}
@@ -1172,15 +1235,36 @@ function setReply(m){if(!m)return;replyTo=m;showNotif("Replying to "+m.username+
 function showCtx(e,id,isOwn){
   e.stopPropagation();e.preventDefault();
   var menu=document.getElementById("ctx");
-  menu.innerHTML=
-    (isOwn?'<div class="ctxi" onclick="startEdit(\''+id+'\');closeCtx()">Edit</div>':"")+
-    '<div class="ctxi gold" onclick="togglePin(\''+id+'\');closeCtx()">Pin / Unpin</div>'+
-    '<div class="ctxi" onclick="setReply(getMsgById(\''+id+'\'));closeCtx()">Reply</div>'+
-    '<div class="ctxsep"></div>'+
-    (isOwn
-      ?'<div class="ctxi danger" onclick="deleteForMe(\''+id+'\');closeCtx()">Delete for me</div>'+
-       '<div class="ctxi danger" onclick="deleteForAll(\''+id+'\');closeCtx()">Delete for everyone</div>'
-      :'<div class="ctxi danger" onclick="deleteForMe(\''+id+'\');closeCtx()">Hide from me</div>');
+  menu.innerHTML="";
+  function addCtxItem(label,cls,fn){
+    var item=document.createElement("div");
+    item.className="ctxi"+(cls?" "+cls:"");
+    item.textContent=label;
+    item.addEventListener("click",function(ev){
+      ev.stopPropagation();
+      fn();
+      closeCtx();
+    });
+    menu.appendChild(item);
+  }
+
+  if(isOwn){
+    addCtxItem("Edit","",function(){startEdit(id);});
+  }
+  addCtxItem("Pin / Unpin","gold",function(){togglePin(id);});
+  addCtxItem("Reply","",function(){setReply(getMsgById(id));});
+
+  var sep=document.createElement("div");
+  sep.className="ctxsep";
+  menu.appendChild(sep);
+
+  if(isOwn){
+    addCtxItem("Delete for me","danger",function(){deleteForMe(id);});
+    addCtxItem("Delete for everyone","danger",function(){deleteForAll(id);});
+  }else{
+    addCtxItem("Hide from me","danger",function(){deleteForMe(id);});
+  }
+
   menu.classList.remove("hidden");
   var x=Math.min(e.clientX,window.innerWidth-195);
   var y=Math.min(e.clientY,window.innerHeight-200);
