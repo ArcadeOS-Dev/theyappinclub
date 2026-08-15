@@ -338,6 +338,106 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
 .esic{font-size:38px;opacity:.35}.est{font-size:13px;text-align:center}
 @media(max-width:800px){.colusr{display:none}}
 @media(max-width:600px){.colch{width:52px}.chit span:not(.chdot){display:none}.collbl{display:none}}
+
+/* TOP-5 CHAT FEATURES */
+.reacts{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.reactchip{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border:1px solid var(--bd);background:var(--elev);border-radius:99px;color:var(--tp);font-size:11px;cursor:pointer}
+.reactchip:hover{background:var(--hover)}
+.reactchip.mine{border-color:var(--acc-b);background:var(--acc-d)}
+.reactpick{position:absolute;z-index:80;display:flex;gap:3px;padding:5px;background:var(--elev);border:1px solid var(--bds);border-radius:9px;box-shadow:var(--sh-lg)}
+.reactpick button{width:28px;height:28px;border:0;background:none;border-radius:6px;cursor:pointer;font-size:17px}
+.reactpick button:hover{background:var(--hover)}
+.replybar{display:flex;align-items:center;gap:8px;padding:6px 9px;margin-bottom:6px;background:var(--elev);border:1px solid var(--bd);border-left:3px solid var(--acc-b);border-radius:8px;font-size:11px;color:var(--ts)}
+.replybar strong{color:var(--tp)}
+.replybar .rbcancel{margin-left:auto;border:0;background:none;color:var(--tm);cursor:pointer;font-size:15px}
+.pinpanel{position:fixed;right:18px;top:62px;width:min(360px,calc(100vw - 36px));max-height:65vh;overflow:auto;background:var(--elev);border:1px solid var(--bds);border-radius:13px;box-shadow:var(--sh-lg);z-index:450;padding:8px}
+.pinpanel.hidden{display:none}
+.pinpanel-head{display:flex;align-items:center;justify-content:space-between;padding:5px 6px 9px;font-size:12px;font-weight:700}
+.pinpanel-close{border:0;background:none;color:var(--tm);cursor:pointer;font-size:16px}
+.pinitem{padding:8px;border:1px solid var(--bd);border-radius:9px;margin:5px 0;cursor:pointer}
+.pinitem:hover{background:var(--hover)}
+.pinitem .pinwho{font-size:10px;color:var(--tm);margin-bottom:3px}
+.pinitem .pintext{font-size:12px;color:var(--tp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mentionme{outline:1px solid var(--acc-b);box-shadow:0 0 0 2px var(--acc-d)}
+@media(max-width:800px){.pinpanel{right:10px;top:58px}}
+
+
+/* DM LIST VISIBILITY FIX */
+#dmlist{display:block;min-height:24px;flex-shrink:0}
+.colch #dmlist{overflow:visible}
+
+
+/* NEXT 5 */
+.searchbox{position:absolute;z-index:300;top:54px;left:50%;transform:translateX(-50%);width:min(520px,calc(100vw - 30px));background:var(--elev);border:1px solid var(--bds);border-radius:12px;box-shadow:var(--sh-lg);padding:8px}
+.searchbox input{width:100%;box-sizing:border-box;border:1px solid var(--bd);background:var(--inp);color:var(--tp);border-radius:8px;padding:9px 11px;outline:none}
+.searchresults{max-height:320px;overflow:auto;margin-top:6px}
+.sr{padding:8px;border-radius:8px;cursor:pointer}.sr:hover{background:var(--hover)}
+.srwho{font-size:10px;color:var(--tm)}.srtext{font-size:12px;color:var(--tp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.newmsgbar{position:absolute;z-index:200;bottom:72px;left:50%;transform:translateX(-50%);padding:7px 12px;border-radius:99px;border:1px solid var(--acc-b);background:var(--elev);color:var(--tp);cursor:pointer;box-shadow:var(--sh)}
+.pollcard{margin-top:6px;border:1px solid var(--bd);border-radius:10px;padding:9px;background:var(--elev)}
+.pollq{font-weight:700;font-size:12px;margin-bottom:7px}.pollopt{display:block;width:100%;text-align:left;margin:4px 0;padding:7px;border:1px solid var(--bd);border-radius:7px;background:var(--inp);color:var(--tp);cursor:pointer}.pollopt:hover{background:var(--hover)}
+.pollcount{float:right;color:var(--tm);font-size:10px}
+@media(max-width:800px){.searchbox{top:50px}}
+
+
+/* NEXT 5B */
+.statusbar{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--tm);margin-left:7px}
+.typingdots{display:inline-flex;gap:2px}.typingdots i{width:4px;height:4px;border-radius:50%;background:currentColor;animation:tydot 1s infinite alternate}
+.typingdots i:nth-child(2){animation-delay:.2s}.typingdots i:nth-child(3){animation-delay:.4s}
+@keyframes tydot{to{opacity:.25;transform:translateY(-2px)}}
+.unreadbadge{min-width:17px;height:17px;padding:0 5px;display:inline-flex;align-items:center;justify-content:center;border-radius:99px;background:var(--acc-b);color:#fff;font-size:9px;font-weight:700;margin-left:auto}
+.lastseen{font-size:9px;color:var(--tm);margin:3px 0 5px;padding-left:3px}
+.filecard{display:flex;align-items:center;gap:8px;border:1px solid var(--bd);border-radius:9px;padding:8px;background:var(--elev);margin-top:5px}
+.fileicon{font-size:20px}.filemeta{min-width:0}.filename{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.filesize{font-size:9px;color:var(--tm)}
+
+
+/* NEXT 5C */
+.msearch-highlight{background:var(--acc-d)!important;outline:2px solid var(--acc-b);border-radius:8px}
+.chat-actions{display:flex;align-items:center;gap:4px}
+.voicebtn{font-size:15px}
+.replyjump{cursor:pointer}
+.usercard{position:fixed;z-index:600;width:min(300px,calc(100vw - 24px));background:var(--elev);border:1px solid var(--bds);border-radius:12px;box-shadow:var(--sh-lg);padding:12px}
+.usercard .uc-head{display:flex;align-items:center;gap:9px}.usercard .uc-name{font-weight:800;color:var(--tp)}.usercard .uc-sub{font-size:10px;color:var(--tm);margin-top:2px}
+.usercard .uc-btn{margin-top:10px;width:100%;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--inp);color:var(--tp);cursor:pointer}.usercard .uc-btn:hover{background:var(--hover)}
+.muted{opacity:.55}
+.msgtime{cursor:pointer}
+
+
+/* NEXT 5D */
+.emoji-picker{position:fixed;z-index:650;width:min(330px,calc(100vw - 20px));background:var(--elev);border:1px solid var(--bds);border-radius:12px;box-shadow:var(--sh-lg);padding:9px}
+.emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:3px}.emoji-grid button{border:0;background:none;border-radius:7px;font-size:20px;padding:6px;cursor:pointer}.emoji-grid button:hover{background:var(--hover)}
+.confirm-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:900;display:flex;align-items:center;justify-content:center}.confirm-card{width:min(360px,calc(100vw - 30px));background:var(--elev);border:1px solid var(--bds);border-radius:13px;box-shadow:var(--sh-lg);padding:16px}.confirm-card h3{margin:0 0 7px;color:var(--tp)}.confirm-card p{font-size:12px;color:var(--ts)}.confirm-actions{display:flex;gap:7px;justify-content:flex-end;margin-top:13px}.confirm-actions button{padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--inp);color:var(--tp);cursor:pointer}.confirm-actions .danger{background:var(--danger,var(--acc-b));color:#fff;border-color:transparent}
+.mention-popup{position:absolute;z-index:500;max-width:280px;max-height:180px;overflow:auto;background:var(--elev);border:1px solid var(--bds);border-radius:10px;box-shadow:var(--sh-lg);padding:4px}.mention-option{padding:7px 9px;border-radius:7px;cursor:pointer;font-size:12px}.mention-option:hover,.mention-option.sel{background:var(--hover)}
+.readreceipt{font-size:9px;color:var(--tm);margin-top:3px}
+
+
+/* NEXT 20 — 26 to 45 */
+.yc-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:15px}
+.yc-card{width:min(460px,100%);max-height:85vh;overflow:auto;background:var(--elev);border:1px solid var(--bds);border-radius:15px;box-shadow:var(--sh-lg);padding:15px;color:var(--tp)}
+.yc-card h3{margin:0 0 10px}.yc-close{float:right;border:0;background:none;color:var(--tm);font-size:18px;cursor:pointer}
+.imgviewer img{max-width:100%;max-height:70vh;display:block;margin:auto;border-radius:10px}
+.voice-preview{width:100%;margin-top:5px}
+.threadline{font-size:10px;color:var(--tm);margin-top:5px;cursor:pointer}.threadline:hover{color:var(--tp)}
+.pinrow,.searchrow,.settingrow{display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px}.pinrow:hover,.searchrow:hover,.settingrow:hover{background:var(--hover)}
+.settingrow label{flex:1}.settingrow input,.settingrow select{max-width:150px}
+.progressbar{height:4px;border-radius:99px;background:var(--bd);overflow:hidden}.progressbar i{display:block;height:100%;width:100%;animation:uploadpulse 1.2s infinite alternate}@keyframes uploadpulse{from{opacity:.35}to{opacity:1}}
+.statusmsg{font-size:10px;color:var(--tm);padding:5px 0}
+.theme-dot{width:18px;height:18px;border-radius:50%;display:inline-block;border:2px solid var(--bd);cursor:pointer}
+.offlinebar{position:fixed;left:50%;transform:translateX(-50%);bottom:10px;z-index:850;padding:6px 11px;border-radius:99px;background:var(--elev);border:1px solid var(--bd);box-shadow:var(--sh);font-size:10px;color:var(--tp)}
+.quickreact{display:flex;gap:4px;margin-top:5px}.quickreact button{border:1px solid var(--bd);background:var(--inp);border-radius:99px;padding:3px 7px;cursor:pointer}
+
+
+/* FINAL 15 — 46 to 60 */
+.mentionme{animation:ycflash 1.2s ease}@keyframes ycflash{0%,100%{outline:0}35%{outline:2px solid var(--acc-b)}}
+.reconnectbtn{border:1px solid var(--bd);background:var(--inp);color:var(--tp);border-radius:8px;padding:6px 10px;cursor:pointer}
+.chat-theme-light{--tp:#17202a;--ts:#425466;--tm:#64748b;--elev:#fff;--inp:#f8fafc;--bd:#d9e0e8;--bds:#c8d2df;--hover:#eef3f8}
+.chat-theme-dark{--tp:#f5f7fa;--ts:#c7d0dc;--tm:#8b98a8;--elev:#171923;--inp:#10121a;--bd:#2b3040;--bds:#343b4d;--hover:#202534}
+.yc-toast-stack{position:fixed;right:12px;bottom:12px;z-index:1200;display:flex;flex-direction:column;gap:6px;pointer-events:none}
+.yc-toast{pointer-events:auto;background:var(--elev);color:var(--tp);border:1px solid var(--bd);border-radius:9px;padding:8px 11px;font-size:11px;box-shadow:var(--sh);max-width:300px}
+.cmdhint{font-size:9px;color:var(--tm);padding:3px 5px}
+.user-search-list{max-height:260px;overflow:auto}.user-search-item{padding:8px;border-radius:8px;cursor:pointer}.user-search-item:hover{background:var(--hover)}
+.yc-countdown{font-variant-numeric:tabular-nums;color:var(--tm);font-size:9px}
+
 </style>
 </head>
 <body>
@@ -489,14 +589,25 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
       <div class="rbadge"><div class="rbdot"></div><div class="rbnm" id="hdr-room">--</div></div>
       <div class="chdrt" id="hdr-title">The Yapping Club</div>
     </div>
-    <div class="chdrrr">
-      <div class="cstat"><div class="sdot"></div><span id="ocnt">0 online</span></div>
+    <button class="bic" id="searchbtn" title="Search messages" onclick="toggleSearch()">&#x1F50D;</button>
+      <div class="chdrrr">
+      <div class="cstat"><div class="sdot"></div><span id="ocnt">0 online</span><span id="typingstatus" class="statusbar"></span></div>
       <button class="tbtn" id="chat-tbtn" onclick="toggleTheme()">&#x1F319;</button>
       <button class="bic" onclick="refreshChat()" title="Refresh messages" aria-label="Refresh messages">&#x21BB;</button>
+      <button class="bic" onclick="togglePinnedPanel()" title="Pinned messages" aria-label="Pinned messages">&#x1F4CC;</button>
+      <button class="bic" onclick="toggleMuteCurrent()" title="Mute/unmute chat" aria-label="Mute/unmute chat">&#x1F507;</button>
+      <button class="bic" onclick="exportChat()" title="Export chat" aria-label="Export chat">&#x2B07;</button>
+      <button class="bic" onclick="showCommandHelp()" title="Shortcuts" aria-label="Shortcuts">?</button>
+      <button class="bic" onclick="searchUsers()" title="Find people" aria-label="Find people">👥</button>
+      <button class="bic" onclick="openChatSettings()" title="Chat settings" aria-label="Chat settings">⚙</button>
+      <button class="bic" onclick="runChatDiagnostics()" title="Diagnostics" aria-label="Diagnostics">🩺</button>
       <button class="bic" onclick="clearView()">&#x1F9F9;</button>
     </div>
   </div>
+  <div id="searchbox" class="searchbox hidden"></div>
+  <div id="newmsgbar" class="newmsgbar hidden"></div>
   <div id="pinban" class="hidden" onclick="scrollToPinned()">Pinned: <span id="pintxt">message</span><span style="margin-left:auto;color:var(--tm);font-size:10px">Click to view</span></div>
+  <div id="pinpanel" class="pinpanel hidden"></div>
   <div class="cbody">
     <div class="colch" id="colch">
       <div class="collbl">Channels</div>
@@ -506,7 +617,7 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
       <div id="dmlist"></div>
     </div>
     <div class="colmsg">
-      <div id="mc"><div class="empty-st" id="es"><div class="esic">&#x1F4AC;</div><div class="est">No messages yet -- start yapping!</div></div></div>
+      <div id="mc"><div id="newdivider" class="lastseen hidden"></div><div class="empty-st" id="es"><div class="esic">&#x1F4AC;</div><div class="est">No messages yet -- start yapping!</div></div></div>
       <div id="typi"></div>
       <div class="ciarea">
         <div class="itbar">
@@ -535,11 +646,14 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
           <button class="tbb" onclick="insertAt('@')">@</button>
         </div>
         <div id="fpbar" class="hidden"></div>
+        <div id="replybar" class="replybar hidden"></div>
         <div style="position:relative">
           <div class="msug hidden" id="msug"></div>
           <div class="iwrap">
             <textarea id="mi" placeholder="Message your class... (@ to mention)" rows="1" maxlength="10000" oninput="onIC()" onkeydown="onIK(event)" onpaste="onPaste(event)"></textarea>
-            <div class="iacs"><span class="cc" id="cc"></span><button class="bsend" onclick="sendMsg()">&#8594;</button></div>
+            <div class="iacs"><span class="cc" id="cc"></span><button type="button" class="bic" title="Emoji" aria-label="Emoji" onclick="toggleEmojiPicker()">😊</button>
+<button type="button" class="bic voicebtn" title="Voice message" aria-label="Voice message" onclick="toggleVoiceRecording()">🎤</button>
+<button class="bsend" onclick="sendMsg()">&#8594;</button></div>
           </div>
         </div>
         <div class="coolbar hidden" id="coolbar"><div class="coolfill" id="coolfill"></div></div>
@@ -599,7 +713,7 @@ var CH_COLORS={general:"#5b7cfa",announcements:"#f5c842",memes:"#ec4899",english
 var SUBJECTS=Object.keys(CH_COLORS);
 var AVATARS=["Fox","Tiger","Frog","Panda","Unicorn","Octopus","Butterfly","Dolphin","Eagle","Dragon","Robot","Alien","Wizard","Brain","Diamond","Moon","Bolt","Fire","Wave","Pizza","Target","Crown","Circus","Art","Lion"];
 var AVATAR_EMOJIS={"Fox":"&#x1F98A;","Tiger":"&#x1F42F;","Frog":"&#x1F438;","Panda":"&#x1F43C;","Unicorn":"&#x1F984;","Octopus":"&#x1F419;","Butterfly":"&#x1F98B;","Dolphin":"&#x1F42C;","Eagle":"&#x1F985;","Dragon":"&#x1F409;","Robot":"&#x1F916;","Alien":"&#x1F47E;","Wizard":"&#x1F9D9;","Brain":"&#x1F9E0;","Diamond":"&#x1F48E;","Moon":"&#x1F319;","Bolt":"&#x26A1;","Fire":"&#x1F525;","Wave":"&#x1F30A;","Pizza":"&#x1F355;","Target":"&#x1F3AF;","Crown":"&#x1F451;","Circus":"&#x1F3AA;","Art":"&#x1F3A8;","Lion":"&#x1F981;"};
-var MAX_MSG=10000,COOL=1200,MAX_SHOW=150,PRES_TTL=30000,TYPING_TO=3000;
+var MAX_MSG=10000,COOL=1200,MAX_SHOW=150,PRES_TTL=120000,TYPING_TO=3000;
 var TENOR="AIzaSyAyimkuYQYF_y7VMae0eSCgCFJpBt3TPSE";
 
 /* STATE */
@@ -610,7 +724,7 @@ var msgsUnsub=null,presUnsub=null,allRoomUsers=[];
 var lastSend=0,typTimer=null,isTyp=false;
 var hbInt=null,presId=null;
 var rendered={},allMsgs=[];
-var pinnedId=null,replyTo=null;
+var pinnedId=null,replyTo=null,mentionSeen={},lastSeenAt=Date.now(),unreadCount=0;
 var onlineUsers=[];
 var mentionSel=0;
 var editId=null;
@@ -925,8 +1039,8 @@ function buildChs(){
 function switchCh(s){
   subj=s;isDM=false;dmPartner=null;buildChs();buildDMs();clearMsgs();
   document.getElementById("hdr-title").textContent="Class "+rm+" - #"+s;
-  document.getElementById("pinban").classList.add("hidden");pinnedId=null;
-  subChannel(rm+"::"+s);
+  document.getElementById("pinban").classList.add("hidden");pinnedId=null;document.getElementById("pinpanel").classList.add("hidden");
+  clearRoomUnread(rm+"::"+s);subChannel(rm+"::"+s);
 }
 function clearMsgs(){
   if(msgsUnsub)msgsUnsub();
@@ -956,14 +1070,17 @@ function buildDMs(){
 function openDM(partner){
   isDM=true;dmPartner=partner;subj=null;buildChs();buildDMs();clearMsgs();
   document.getElementById("hdr-title").textContent="DM with "+partner;
-  document.getElementById("pinban").classList.add("hidden");pinnedId=null;
-  subChannel(dmId(usr,partner));
+  document.getElementById("pinban").classList.add("hidden");pinnedId=null;document.getElementById("pinpanel").classList.add("hidden");
+  clearRoomUnread(dmId(usr,partner));subChannel(dmId(usr,partner));
   showNotif("DM with "+partner+" opened","info");
 }
 function dmId(a,b){return[a,b].sort().join("::dm::");}
 
 /* MESSAGES */
 function subChannel(ch){
+  refreshMentionUsers();
+  loadDraft();updateDraftCounter();
+  watchTyping();
   if(msgsUnsub)msgsUnsub();
   if(!db)return;
 
@@ -999,9 +1116,19 @@ function subChannel(ch){
       allMsgs.forEach(function(d,i){
         rendered[d.id]=true;
         renderMsg(d,i);
+        if(d.username!==usr && (new RegExp("@"+usr.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?:\\b|\\s|$)","i").test(d.text||"") || /@everyone\\b/i.test(d.text||"")) && !mentionSeen[d.id]){
+          mentionSeen[d.id]=true;
+          showNotif("You were mentioned by "+d.username,"info");
+        }
       });
 
-      scrollBot();
+      if(document.hidden){
+        allMsgs.forEach(showNotificationsForMessage);
+        updateUnreadFromSnapshot();
+      }else{
+        updateUnreadFromSnapshot();
+      }
+      if(!document.getElementById("pinpanel").classList.contains("hidden"))buildPinnedPanel();
     },function(e){
       console.error("[TYC] FIRESTORE LISTENER ERROR:",e);
       showNotif("Live chat error: "+(e.code||"check console"),"error");
@@ -1030,7 +1157,7 @@ function renderMsg(d,idx,container){
   var color=uColor(d.username);
   var row=document.createElement("div");
   row.className="mrow"+(isOwn?" own":"")+(isCont?" cont":"")+(d.pinned?" pinned":"");
-  row.id="m-"+d.id;row.dataset.id=d.id;
+  row.id="m-"+d.id;row.setAttribute("data-msg-id",d.id);row.dataset.id=d.id;
   var startX=0;
   row.addEventListener("touchstart",function(e){startX=e.touches[0].clientX;},{passive:true});
   row.addEventListener("touchend",function(e){if(e.changedTouches[0].clientX-startX>55)setReply(getMsgById(d.id));});
@@ -1061,6 +1188,10 @@ function renderMsg(d,idx,container){
     del.className="mdel";
     del.textContent="this msg has been unalived";
     wrap.appendChild(del);
+  }else if(d.poll){
+    renderPoll(d,wrap);
+  }else if(d.file||d.attachment){
+    renderAttachment(d,wrap);
   }else{
     var bubble=document.createElement("div");bubble.className="mbub";
     if(d.type==="gif"){
@@ -1081,6 +1212,11 @@ function renderMsg(d,idx,container){
       bubble.innerHTML=esc(d.text).replace(/@(\w[\w \-]{0,22})/g,function(_,m){return'<span class="mention">@'+m+'</span>';});
     }
     wrap.appendChild(bubble);
+  }
+  renderReactions(d,wrap);
+  if(d.username===usr && d.id===allMsgs.filter(function(x){return x.username===usr;}).slice(-1)[0]?.id){
+    var rr=document.createElement("div");rr.className="readreceipt";rr.textContent="Seen in this browser";
+    wrap.appendChild(rr);
   }
   var acts=document.createElement("div");
   acts.className="macts";
@@ -1117,6 +1253,16 @@ function renderMsg(d,idx,container){
     acts.appendChild(editBtn);
   }
 
+  var reactBtn=document.createElement("button");
+  reactBtn.className="mab reactbtn";
+  reactBtn.title="React";
+  reactBtn.textContent="😊";
+  reactBtn.addEventListener("click",function(e){
+    e.stopPropagation();
+    openReactionPicker(reactBtn,d.id);
+  });
+  acts.appendChild(reactBtn);
+
   var moreBtn=document.createElement("button");
   moreBtn.className="mab";
   moreBtn.title="More";
@@ -1146,6 +1292,12 @@ function refreshMsg(d,idx){
 function getMsgById(id){return allMsgs.find(function(m){return m.id===id;});}
 
 /* SEND */
+function tryPollCommand(text){
+  if(text.indexOf("/poll ")!==0)return false;
+  var parts=text.substring(6).split("|").map(function(x){return x.trim();}).filter(Boolean);
+  if(parts.length<3){showNotif("Poll format: /poll question | option 1 | option 2","error");return true;}
+  createPoll(parts[0],parts.slice(1));return true;
+}
 function sendMsg(){
   if(editId){saveEdit();return;}
   if(pendingFile){sendFile(pendingFile);clearFP();return;}
@@ -1156,7 +1308,7 @@ function sendMsg(){
   input.value="";autoResize();updCC("");lastSend=now;stopTyp();
   var ch=isDM?dmId(usr,dmPartner):rm+"::"+subj;
   var data={username:usr,avatar:usrAv,avatarUrl:usrAvUrl,text:text,room:ch,timestamp:firebase.firestore.FieldValue.serverTimestamp(),type:"chat"};
-  if(replyTo){data.replyTo=replyTo.id;data.replyToText=(replyTo.text||"").substring(0,80);replyTo=null;}
+  if(replyTo){data.replyTo=replyTo.id;data.replyToText=(replyTo.text||"").substring(0,80);cancelReply();}
   if(!db){showNotif("Firebase not configured","error");return;}
   db.collection("messages").add(data).then(function(ref){
     // Render immediately in this browser instead of waiting for the
@@ -1220,16 +1372,876 @@ function deleteForMe(id){
 }
 function deleteForAll(id){
   if(!db)return;
-  db.collection("messages").doc(id).update({
-    deletedForAll:true,
-    text:""
-  }).catch(function(e){
-    console.error("[TYC] Delete-for-all failed:",e);
-    showNotif("Delete failed: "+(e.code||"check console"),"error");
+  askConfirm("Delete for everyone?","This will replace the message with the deleted-message tag for everyone in this chat.",function(){
+    db.collection("messages").doc(id).update({
+      deletedForAll:true,
+      text:""
+    }).catch(function(e){
+      console.error("[TYC] Delete-for-all failed:",e);
+      showNotif("Delete failed: "+(e.code||"check console"),"error");
+    });
   });
 }
 function scrollToPinned(){if(pinnedId){var el=document.getElementById("m-"+pinnedId);if(el)el.scrollIntoView({behavior:"smooth",block:"center"});}}
-function setReply(m){if(!m)return;replyTo=m;showNotif("Replying to "+m.username+"...","info");document.getElementById("mi").focus();}
+function setReply(m){
+  if(!m)return;
+  replyTo=m;
+  var bar=document.getElementById("replybar");
+  if(bar){
+    bar.classList.remove("hidden");
+    bar.innerHTML='<strong>Replying to '+esc(m.username)+'</strong><span>'+esc((m.text||"message").substring(0,90))+'</span><button class="rbcancel" title="Cancel reply">&times;</button>';
+    bar.querySelector(".rbcancel").onclick=function(){cancelReply();};
+  }
+  document.getElementById("mi").focus();
+}
+function cancelReply(){
+  replyTo=null;
+  var bar=document.getElementById("replybar");
+  if(bar){bar.classList.add("hidden");bar.innerHTML="";}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NEXT 5D — EXPORT CHAT */
+function exportChat(){
+  var visible=allMsgs.filter(function(m){return !m.deletedForAll&&!((m.hiddenFor||[]).indexOf(usr)>=0);});
+  var lines=visible.map(function(m){
+    var t=m.createdAt&&m.createdAt.toDate?m.createdAt.toDate().toLocaleString("en-IN"):"";
+    return "["+t+"] "+m.username+": "+(m.text||"[attachment/poll]");
+  });
+  var blob=new Blob([lines.join("\n")],{type:"text/plain;charset=utf-8"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="yapping-club-chat.txt";a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+}
+
+/* NEXT 5D — READ RECEIPTS */
+function markRoomRead(){
+  if(!db||!roomKey)return;
+  try{
+    localStorage.setItem("tyc_read_"+roomKey,String(Date.now()));
+  }catch(e){}
+}
+function getRoomRead(){
+  try{return Number(localStorage.getItem("tyc_read_"+roomKey)||0);}catch(e){return 0;}
+}
+
+/* NEXT 5D — MENTION AUTOCOMPLETE */
+var mentionUsers=[];
+function refreshMentionUsers(){
+  if(!db||!roomKey)return;
+  db.collection("presence").limit(100).get().then(function(s){
+    mentionUsers=[];s.forEach(function(doc){var d=doc.data()||{};if(d.username)mentionUsers.push(d.username);});
+    mentionUsers=[...new Set(mentionUsers)].sort(function(a,b){return a.localeCompare(b);});
+  }).catch(function(){});
+}
+function updateMentionPopup(){
+  var mi=document.getElementById("mi");if(!mi)return;
+  var val=mi.value,at=val.lastIndexOf("@"),after=val.slice(at+1);
+  if(at<0||after.indexOf(" ")>=0||after.indexOf("\n")>=0){closeMentionPopup();return;}
+  var q=after.toLowerCase(),hits=mentionUsers.filter(function(u){return u.toLowerCase().indexOf(q)===0;}).slice(0,8);
+  if(!hits.length){closeMentionPopup();return;}
+  var p=document.getElementById("mention-popup");
+  if(!p){p=document.createElement("div");p.id="mention-popup";p.className="mention-popup";mi.parentNode.appendChild(p);}
+  p.innerHTML="";
+  hits.forEach(function(u){
+    var b=document.createElement("div");b.className="mention-option";b.textContent="@"+u;
+    b.onclick=function(){var start=at;mi.value=val.slice(0,start)+"@"+u+" ";mi.selectionStart=mi.selectionEnd=mi.value.length;closeMentionPopup();mi.focus();saveDraft();};
+    p.appendChild(b);
+  });
+}
+function closeMentionPopup(){var p=document.getElementById("mention-popup");if(p)p.remove();}
+
+/* NEXT 5C — REPLY JUMP */
+function jumpToMessage(id){
+  if(!id)return;
+  var el=document.getElementById("m-"+id);
+  if(!el)return;
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+  el.classList.add("msearch-highlight");
+  setTimeout(function(){el.classList.remove("msearch-highlight");},1500);
+}
+
+
+
+/* NEXT 20 — additive enhancements */
+
+/* 26. Full image preview */
+function openImageViewer(url,name){
+  if(!url)return;
+  var m=document.createElement("div");m.className="yc-modal imgviewer";
+  m.innerHTML='<div class="yc-card"><button class="yc-close">×</button><h3></h3><img></div>';
+  m.querySelector("h3").textContent=name||"Image";
+  m.querySelector("img").src=url;
+  m.querySelector(".yc-close").onclick=function(){m.remove();};
+  m.onclick=function(e){if(e.target===m)m.remove();};
+  document.body.appendChild(m);
+}
+
+/* 27. Voice-message recorder */
+var ycRecorder=null,ycChunks=[];
+function toggleVoiceRecording(){
+  if(ycRecorder&&ycRecorder.state==="recording"){ycRecorder.stop();return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){showNotif("Voice recording is not supported here","error");return;}
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    ycChunks=[];ycRecorder=new MediaRecorder(stream);
+    ycRecorder.ondataavailable=function(e){if(e.data.size)ycChunks.push(e.data);};
+    ycRecorder.onstop=function(){
+      stream.getTracks().forEach(function(t){t.stop();});
+      var blob=new Blob(ycChunks,{type:"audio/webm"});
+      var url=URL.createObjectURL(blob);
+      var audio=document.createElement("audio");audio.controls=true;audio.src=url;audio.className="voice-preview";
+      var box=document.createElement("div");box.className="yc-modal";
+      var card=document.createElement("div");card.className="yc-card";
+      var h=document.createElement("h3");h.textContent="Voice message preview";card.appendChild(h);
+      card.appendChild(audio);
+      var send=document.createElement("button");send.textContent="Send";send.className="btn";
+      var cancel=document.createElement("button");cancel.textContent="Cancel";cancel.className="btn";
+      send.onclick=function(){
+        // Store a local preview only if Storage upload is unavailable.
+        // This avoids breaking the existing Firestore message path.
+        var msg=makeBaseMsg();msg.text="🎤 Voice message";msg.voiceLocal=url;
+        db.collection("messages").add(msg).catch(function(e){console.error(e);showNotif("Voice message failed","error");});
+        box.remove();
+      };
+      cancel.onclick=function(){box.remove();URL.revokeObjectURL(url);};
+      card.appendChild(send);card.appendChild(cancel);box.appendChild(card);document.body.appendChild(box);
+    };
+    ycRecorder.start();
+    showNotif("Recording… click the voice button again to stop","info");
+  }).catch(function(){showNotif("Microphone permission was denied","error");});
+}
+
+/* 28. Lightweight reply-thread view */
+function openReplyThread(parentId){
+  var replies=allMsgs.filter(function(m){return m.replyTo===parentId;});
+  var m=document.createElement("div");m.className="yc-modal";
+  var card=document.createElement("div");card.className="yc-card";
+  var close=document.createElement("button");close.className="yc-close";close.textContent="×";
+  close.onclick=function(){m.remove();};
+  var h=document.createElement("h3");h.textContent="Replies ("+replies.length+")";
+  card.appendChild(close);card.appendChild(h);
+  if(!replies.length){var p=document.createElement("p");p.className="statusmsg";p.textContent="No replies yet.";card.appendChild(p);}
+  replies.forEach(function(r){var row=document.createElement("div");row.className="threadline";row.textContent=r.username+": "+(r.text||"");row.onclick=function(){m.remove();jumpToMessage(r.id);};card.appendChild(row);});
+  m.appendChild(card);document.body.appendChild(m);
+}
+
+/* 29. Pinned-message search/filter */
+function filterPinned(query){
+  var q=(query||"").toLowerCase();
+  document.querySelectorAll(".pinrow").forEach(function(r){r.style.display=r.textContent.toLowerCase().indexOf(q)>=0?"":"none";});
+}
+
+/* 30. Chat management */
+function leaveCurrentChat(){
+  askConfirm("Leave this chat?","You can join it again later.",function(){
+    if(roomKey)clearRoomUnread(roomKey);
+    if(typeof showHome==="function")showHome();
+    else if(typeof closeChat==="function")closeChat();
+  });
+}
+function clearMyView(){
+  if(!roomKey)return;
+  try{localStorage.setItem("tyc_clear_"+roomKey,String(Date.now()));}catch(e){}
+  renderMessages();
+  showNotif("Your local chat view was cleared","info");
+}
+
+/* 31. GIF search placeholder using a simple provider URL */
+function insertGifUrl(){
+  var url=prompt("Paste a GIF URL:");
+  if(!url)return;
+  var mi=document.getElementById("mi");mi.value+=(mi.value?" ":"")+url;saveDraft();mi.focus();
+}
+
+/* 32. Sticker shortcuts */
+function insertSticker(sticker){
+  var mi=document.getElementById("mi");if(!mi)return;
+  mi.value+=(mi.value?" ":"")+sticker;saveDraft();mi.focus();
+}
+
+/* 33. Image/file upload progress hook */
+function showUploadProgress(label){
+  var m=document.createElement("div");m.className="yc-modal";
+  var c=document.createElement("div");c.className="yc-card";
+  c.innerHTML="<h3></h3><div class='progressbar'><i></i></div><div class='statusmsg'>Uploading…</div>";
+  c.querySelector("h3").textContent=label||"Uploading";
+  m.appendChild(c);document.body.appendChild(m);
+  return function(done){if(done)m.remove();};
+}
+
+/* 34. Better image/file previews */
+function previewAttachment(file){
+  if(!file)return;
+  var url=URL.createObjectURL(file);
+  if(file.type.indexOf("image/")===0)openImageViewer(url,file.name);
+  else showNotif(file.name+" ready to upload","info");
+  setTimeout(function(){URL.revokeObjectURL(url);},60000);
+}
+
+/* 35. Favourite/star messages */
+function toggleStarMessage(id){
+  var key="tyc_starred_"+id,on=false;
+  try{on=localStorage.getItem(key)==="1";if(on)localStorage.removeItem(key);else localStorage.setItem(key,"1");}catch(e){}
+  showNotif(on?"Removed from starred":"⭐ Starred message","info");
+  renderMessages();
+}
+function isStarred(id){try{return localStorage.getItem("tyc_starred_"+id)==="1";}catch(e){return false;}}
+
+/* 36. User status message */
+function setUserStatus(){
+  var old="";try{old=localStorage.getItem("tyc_status")||"";}catch(e){}
+  var s=prompt("Set your status (leave blank to clear):",old);
+  if(s===null)return;
+  try{localStorage.setItem("tyc_status",s.slice(0,80));}catch(e){}
+  showNotif(s?"Status updated":"Status cleared","info");
+}
+
+/* 37. Last-seen display (local hint, not a server claim) */
+function setLocalPresence(){
+  try{localStorage.setItem("tyc_last_active",String(Date.now()));}catch(e){}
+}
+document.addEventListener("visibilitychange",setLocalPresence);
+
+/* 38. Custom chat wallpaper */
+function setChatWallpaper(){
+  var old="";try{old=localStorage.getItem("tyc_wallpaper_"+roomKey)||"";}catch(e){}
+  var w=prompt("Enter a CSS colour or image URL. Blank resets it:",old);
+  if(w===null)return;
+  try{localStorage.setItem("tyc_wallpaper_"+roomKey,w);}catch(e){}
+  applyChatWallpaper();
+}
+function applyChatWallpaper(){
+  var mc=document.getElementById("mc");if(!mc||!roomKey)return;
+  var w="";try{w=localStorage.getItem("tyc_wallpaper_"+roomKey)||"";}catch(e){}
+  mc.style.backgroundImage=w?(w.indexOf("url(")===0?w:"url('"+w.replace(/'/g,"")+"')"):"";
+  if(w&&!w.match(/url\(/i))mc.style.backgroundImage="none";
+  if(w&&w.match(/^#/))mc.style.backgroundColor=w;
+}
+
+/* 39. Notification preference */
+function toggleNotifications(){
+  var on=true;try{on=localStorage.getItem("tyc_notifications")!=="0";}catch(e){}
+  on=!on;try{localStorage.setItem("tyc_notifications",on?"1":"0");}catch(e){}
+  showNotif(on?"Notifications enabled":"Notifications disabled","info");
+}
+
+/* 40. Compact display mode */
+function toggleCompactMode(){
+  var on=false;try{on=localStorage.getItem("tyc_compact")!=="1";localStorage.setItem("tyc_compact",on?"1":"0");}catch(e){}
+  document.body.classList.toggle("compact-mode",on);
+  showNotif(on?"Compact mode on":"Compact mode off","info");
+}
+
+/* 41. Message editing history */
+function saveEditHistory(id,oldText,newText){
+  var key="tyc_edits_"+id,h=[];
+  try{h=JSON.parse(localStorage.getItem(key)||"[]");h.push({text:oldText,at:Date.now()});localStorage.setItem(key,JSON.stringify(h.slice(-10)));}catch(e){}
+}
+function showEditHistory(id){
+  var h=[];try{h=JSON.parse(localStorage.getItem("tyc_edits_"+id)||"[]");}catch(e){}
+  var m=document.createElement("div");m.className="yc-modal";var c=document.createElement("div");c.className="yc-card";
+  var x=document.createElement("button");x.className="yc-close";x.textContent="×";x.onclick=function(){m.remove();};c.appendChild(x);
+  var t=document.createElement("h3");t.textContent="Edit history";c.appendChild(t);
+  if(!h.length){var p=document.createElement("p");p.className="statusmsg";p.textContent="No local edit history.";c.appendChild(p);}
+  h.slice().reverse().forEach(function(v){var p=document.createElement("p");p.className="statusmsg";p.textContent=new Date(v.at).toLocaleString("en-IN")+" — "+v.text;c.appendChild(p);});
+  m.appendChild(c);document.body.appendChild(m);
+}
+
+/* 42. Reconnect/offline indicator */
+var offlineBar=null;
+function updateConnectionUI(){
+  if(navigator.onLine){if(offlineBar){offlineBar.remove();offlineBar=null;}}
+  else if(!offlineBar){
+    offlineBar=document.createElement("div");offlineBar.className="offlinebar";offlineBar.textContent="You're offline — messages will reconnect when you're back online";document.body.appendChild(offlineBar);
+  }
+}
+window.addEventListener("online",updateConnectionUI);window.addEventListener("offline",updateConnectionUI);updateConnectionUI();
+
+/* 43. Accessibility: keyboard focus helper */
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    var m=document.querySelector(".yc-modal");if(m)m.remove();
+    var ep=document.getElementById("emoji-picker");if(ep)ep.remove();
+    closeMentionPopup();
+  }
+});
+
+/* 44. Quick reaction row */
+function quickReact(id,emoji){
+  var m=allMsgs.find(function(x){return x.id===id;});if(!m||!db)return;
+  var reactions=Object.assign({},m.reactions||{}),arr=Array.isArray(reactions[emoji])?reactions[emoji].slice():[];
+  var i=arr.indexOf(usr);if(i>=0)arr.splice(i,1);else arr.push(usr);reactions[emoji]=arr;
+  db.collection("messages").doc(id).update({reactions:reactions}).catch(function(e){console.error(e);});
+}
+
+/* 45. Chat settings panel */
+function openChatSettings(){
+  var m=document.createElement("div");m.className="yc-modal";
+  var c=document.createElement("div");c.className="yc-card";
+  var x=document.createElement("button");x.className="yc-close";x.textContent="×";x.onclick=function(){m.remove();};
+  c.appendChild(x);
+  var h=document.createElement("h3");h.textContent="Chat settings";c.appendChild(h);
+  function row(label,fn,txt){
+    var r=document.createElement("div");r.className="settingrow";var l=document.createElement("label");l.textContent=label;r.appendChild(l);
+    var b=document.createElement("button");b.className="btn";b.textContent=txt||"Change";b.onclick=fn;r.appendChild(b);c.appendChild(r);
+  }
+  row("Mute notifications",toggleMuteCurrent,"Toggle");
+  row("Notifications",toggleNotifications,"Toggle");
+  row("Wallpaper",setChatWallpaper,"Change");
+  row("Display density",toggleCompactMode,"Toggle");
+  row("Your status",setUserStatus,"Set");
+  row("Export chat",exportChat,"Export");
+  row("Leave chat",leaveCurrentChat,"Leave");
+  m.appendChild(c);document.body.appendChild(m);
+}
+
+
+/* FINAL 15 — 46 to 60 */
+
+/* 46. Reliable reconnect / retry */
+var ycReconnectTimer=null;
+function reconnectChat(){
+  try{
+    if(ycReconnectTimer)clearTimeout(ycReconnectTimer);
+    if(typeof subChannel==="function"&&roomKey)subChannel(roomKey);
+    showNotif("Reconnecting…","info");
+  }catch(e){console.error("[TYC] reconnect:",e);}
+}
+window.addEventListener("online",function(){setTimeout(reconnectChat,500);});
+
+/* 47. Search result highlight */
+function highlightSearchResult(id){
+  var el=document.getElementById("m-"+id);if(!el)return;
+  el.scrollIntoView({behavior:"smooth",block:"center"});
+  el.classList.add("mentionme");
+  setTimeout(function(){el.classList.remove("mentionme");},1400);
+}
+
+/* 48. Copy message text */
+function copyMessageText(id){
+  var d=allMsgs.find(function(x){return x.id===id;});if(!d)return;
+  var text=d.text||"";
+  if(navigator.clipboard)navigator.clipboard.writeText(text).then(function(){showNotif("Message copied","info");}).catch(function(){showNotif("Copy failed","error");});
+  else showNotif("Clipboard unavailable","error");
+}
+
+/* 49. Share message */
+function shareMessage(id){
+  var d=allMsgs.find(function(x){return x.id===id;});if(!d)return;
+  var text=(d.username||"")+" said: "+(d.text||"");
+  if(navigator.share)navigator.share({title:"Yapping Club message",text:text}).catch(function(){});
+  else if(navigator.clipboard)navigator.clipboard.writeText(text).then(function(){showNotif("Message copied for sharing","info");});
+}
+
+/* 50. Toast stack */
+var ycToastStack=null;
+function ycToast(text){
+  if(!ycToastStack){ycToastStack=document.createElement("div");ycToastStack.className="yc-toast-stack";document.body.appendChild(ycToastStack);}
+  var t=document.createElement("div");t.className="yc-toast";t.textContent=text;ycToastStack.appendChild(t);
+  setTimeout(function(){t.remove();},3000);
+}
+
+/* 51. Simple command help */
+function showCommandHelp(){
+  var commands=[
+    "/poll question | option 1 | option 2",
+    "@username — mention someone",
+    "Emoji button — insert emoji",
+    "🎤 — record a voice message",
+    "↓ — export the current chat"
+  ];
+  var m=document.createElement("div");m.className="yc-modal";
+  var c=document.createElement("div");c.className="yc-card";
+  var x=document.createElement("button");x.className="yc-close";x.textContent="×";x.onclick=function(){m.remove();};
+  var h=document.createElement("h3");h.textContent="Yapping Club shortcuts";
+  c.appendChild(x);c.appendChild(h);
+  commands.forEach(function(v){var p=document.createElement("div");p.className="cmdhint";p.textContent=v;c.appendChild(p);});
+  m.appendChild(c);document.body.appendChild(m);
+}
+
+/* 52. User search */
+function searchUsers(){
+  var q=prompt("Search for a username:");if(!q)return;
+  q=q.toLowerCase();
+  var hits=mentionUsers.filter(function(u){return u.toLowerCase().indexOf(q)>=0;}).slice(0,20);
+  var m=document.createElement("div");m.className="yc-modal";
+  var c=document.createElement("div");c.className="yc-card";
+  var x=document.createElement("button");x.className="yc-close";x.textContent="×";x.onclick=function(){m.remove();};
+  var h=document.createElement("h3");h.textContent="People";
+  c.appendChild(x);c.appendChild(h);
+  if(!hits.length){var p=document.createElement("p");p.className="statusmsg";p.textContent="No matching users found.";c.appendChild(p);}
+  hits.forEach(function(u){var r=document.createElement("div");r.className="user-search-item";r.textContent=u;r.onclick=function(){m.remove();if(u!==usr&&typeof openDM==="function")openDM(u);};c.appendChild(r);});
+  m.appendChild(c);document.body.appendChild(m);
+}
+
+/* 53. Theme presets */
+function setThemePreset(name){
+  document.body.classList.remove("chat-theme-light","chat-theme-dark");
+  if(name==="light")document.body.classList.add("chat-theme-light");
+  if(name==="dark")document.body.classList.add("chat-theme-dark");
+  try{localStorage.setItem("tyc_theme",name);}catch(e){}
+}
+(function(){try{var t=localStorage.getItem("tyc_theme");if(t)setThemePreset(t);}catch(e){}})();
+
+/* 54. Notification sound toggle */
+var ycSoundOn=true;
+try{ycSoundOn=localStorage.getItem("tyc_sound")!=="0";}catch(e){}
+function toggleNotificationSound(){
+  ycSoundOn=!ycSoundOn;
+  try{localStorage.setItem("tyc_sound",ycSoundOn?"1":"0");}catch(e){}
+  showNotif(ycSoundOn?"Notification sound enabled":"Notification sound disabled","info");
+}
+function playChatPing(){
+  if(!ycSoundOn)return;
+  try{
+    var C=window.AudioContext||window.webkitAudioContext;if(!C)return;
+    var a=new C(),o=a.createOscillator(),g=a.createGain();
+    o.frequency.value=880;g.gain.value=.025;o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.07);
+  }catch(e){}
+}
+
+/* 55. Message count / room info */
+function showRoomInfo(){
+  var visible=allMsgs.filter(function(m){return !m.deletedForAll&&!((m.hiddenFor||[]).indexOf(usr)>=0);});
+  var unique=[...new Set(visible.map(function(m){return m.username;}).filter(Boolean))];
+  var m=document.createElement("div");m.className="yc-modal";
+  var c=document.createElement("div");c.className="yc-card";
+  var x=document.createElement("button");x.className="yc-close";x.textContent="×";x.onclick=function(){m.remove();};
+  var h=document.createElement("h3");h.textContent="Chat info";c.appendChild(x);c.appendChild(h);
+  var p=document.createElement("p");p.className="statusmsg";p.textContent=visible.length+" visible messages • "+unique.length+" participants";c.appendChild(p);
+  m.appendChild(c);document.body.appendChild(m);
+}
+
+/* 56. Better date separators */
+function dateKeyForMessage(d){
+  var dt=d.createdAt&&d.createdAt.toDate?d.createdAt.toDate():new Date();
+  return dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate();
+}
+function dateLabel(d){
+  var dt=d.createdAt&&d.createdAt.toDate?d.createdAt.toDate():new Date();
+  var now=new Date(),a=new Date(now.getFullYear(),now.getMonth(),now.getDate()),b=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate());
+  var days=Math.round((a-b)/86400000);
+  if(days===0)return"Today";if(days===1)return"Yesterday";
+  return dt.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+}
+
+/* 57. Rate-limit accidental duplicate sends locally */
+var ycLastSendText="",ycLastSendAt=0;
+function isDuplicateSend(text){
+  var now=Date.now(),dup=text===ycLastSendText&&now-ycLastSendAt<900;
+  if(!dup){ycLastSendText=text;ycLastSendAt=now;}
+  return dup;
+}
+
+/* 58. Draft character counter */
+function updateDraftCounter(){
+  var mi=document.getElementById("mi"),counter=document.getElementById("yc-draft-counter");
+  if(mi&&counter)counter.textContent=mi.value.length+"/4000";
+}
+function enforceDraftLimit(){
+  var mi=document.getElementById("mi");if(!mi)return;
+  if(mi.value.length>4000)mi.value=mi.value.slice(0,4000);
+  updateDraftCounter();
+}
+
+/* 59. Keyboard shortcuts */
+document.addEventListener("keydown",function(e){
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
+    e.preventDefault();
+    if(typeof toggleSearch==="function")toggleSearch();
+  }
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="e"){
+    e.preventDefault();
+    if(typeof exportChat==="function")exportChat();
+  }
+});
+
+/* 60. App diagnostics */
+function runChatDiagnostics(){
+  var checks=[
+    ["Firebase",!!window.firebase],
+    ["Firestore",!!db],
+    ["Current room",!!roomKey],
+    ["Network",navigator.onLine],
+    ["Messages loaded",Array.isArray(allMsgs)]
+  ];
+  var m=document.createElement("div");m.className="yc-modal";
+  var c=document.createElement("div");c.className="yc-card";
+  var x=document.createElement("button");x.className="yc-close";x.textContent="×";x.onclick=function(){m.remove();};
+  var h=document.createElement("h3");h.textContent="Connection diagnostics";c.appendChild(x);c.appendChild(h);
+  checks.forEach(function(v){var p=document.createElement("div");p.className="statusmsg";p.textContent=(v[0]+": "+(v[1]?"OK":"Check"));c.appendChild(p);});
+  m.appendChild(c);document.body.appendChild(m);
+}
+
+/* NEXT 5D — EMOJI PICKER */
+var EMOJIS=["😀","😂","🤣","😭","😎","😮","😡","🤔","🙃","😉","😍","🥳","😴","🤯","💀","👀","👍","👎","👏","🙏","🔥","❤️","💯","✨","🎉","💀","🤡","🤓","😈","🫡","🗿","🍿","💩","🐸","🐱","🐶","🦆","⚽","🏏","🎮","🎯","📚","✏️","☕","🌚","🌝","🚀","💻","📱","❤️‍🔥","🥶","🥹","😤","😬","😅","😌","🤨","🫠","🤝","🙌","💪"];
+function toggleEmojiPicker(){
+  var old=document.getElementById("emoji-picker");
+  if(old){old.remove();return;}
+  var p=document.createElement("div");p.id="emoji-picker";p.className="emoji-picker";
+  var g=document.createElement("div");g.className="emoji-grid";
+  EMOJIS.forEach(function(em){
+    var b=document.createElement("button");b.type="button";b.textContent=em;
+    b.onclick=function(){insertEmoji(em);};
+    g.appendChild(b);
+  });
+  p.appendChild(g);document.body.appendChild(p);
+  var mi=document.getElementById("mi"),r=mi.getBoundingClientRect();
+  p.style.left=Math.min(Math.max(8,r.left),window.innerWidth-p.offsetWidth-8)+"px";
+  p.style.top=Math.max(8,r.top-p.offsetHeight-8)+"px";
+}
+function insertEmoji(em){
+  var mi=document.getElementById("mi");if(!mi)return;
+  var a=mi.selectionStart||mi.value.length,b=mi.selectionEnd||a;
+  mi.value=mi.value.slice(0,a)+em+mi.value.slice(b);
+  mi.selectionStart=mi.selectionEnd=a+em.length;mi.focus();saveDraft();
+  var p=document.getElementById("emoji-picker");if(p)p.remove();
+}
+
+/* NEXT 5C — DRAFTS */
+function draftKey(){return "tyc_draft_"+(roomKey||"none");}
+function saveDraft(){
+  var mi=document.getElementById("mi");if(!mi)return;
+  try{localStorage.setItem(draftKey(),mi.value||"");}catch(e){}
+}
+function loadDraft(){
+  var mi=document.getElementById("mi");if(!mi)return;
+  try{mi.value=localStorage.getItem(draftKey())||"";}catch(e){}
+}
+
+/* NEXT 5C — MUTE CURRENT CHAT */
+var mutedRooms={};
+try{mutedRooms=JSON.parse(localStorage.getItem("tyc_muted_rooms")||"{}");}catch(e){mutedRooms={};}
+function isMuted(key){return !!mutedRooms[key];}
+function toggleMuteCurrent(){
+  if(!roomKey)return;
+  mutedRooms[roomKey]=!mutedRooms[roomKey];
+  if(!mutedRooms[roomKey])delete mutedRooms[roomKey];
+  try{localStorage.setItem("tyc_muted_rooms",JSON.stringify(mutedRooms));}catch(e){}
+  showNotif(mutedRooms[roomKey]?"Chat muted":"Chat unmuted","info");
+}
+
+
+/* NEXT 5D — CONFIRMATION MODAL */
+function askConfirm(title,text,yes){
+  var old=document.getElementById("confirm-modal");if(old)old.remove();
+  var m=document.createElement("div");m.id="confirm-modal";m.className="confirm-modal";
+  m.innerHTML='<div class="confirm-card"><h3></h3><p></p><div class="confirm-actions"><button id="ccancel">Cancel</button><button id="cyes" class="danger">Continue</button></div></div>';
+  m.querySelector("h3").textContent=title;m.querySelector("p").textContent=text;
+  m.querySelector("#ccancel").onclick=function(){m.remove();};
+  m.querySelector("#cyes").onclick=function(){m.remove();yes();};
+  m.addEventListener("click",function(e){if(e.target===m)m.remove();});
+  document.body.appendChild(m);
+}
+
+/* NEXT 5C — MESSAGE DETAILS */
+function showMessageDetails(d){
+  var when=d.createdAt&&d.createdAt.toDate?d.createdAt.toDate():new Date();
+  var text=when.toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"});
+  showNotif("Sent "+text+(d.editedAt?" • Edited":"")+(d.deletedForAll?" • Deleted for everyone":""),"info");
+}
+
+/* NEXT 5C — USER PROFILE CARD */
+var userCardEl=null;
+function closeUserCard(){if(userCardEl){userCardEl.remove();userCardEl=null;}}
+function showUserCard(username,anchor){
+  closeUserCard();
+  var card=document.createElement("div");card.className="usercard";
+  var head=document.createElement("div");head.className="uc-head";
+  var avatar=document.createElement("div");avatar.className="ava sm";
+  avatar.textContent=(username||"?").charAt(0).toUpperCase();
+  var info=document.createElement("div");
+  var name=document.createElement("div");name.className="uc-name";name.textContent=username;
+  var sub=document.createElement("div");sub.className="uc-sub";sub.textContent=username===usr?"You":"Classmate";
+  info.appendChild(name);info.appendChild(sub);head.appendChild(avatar);head.appendChild(info);card.appendChild(head);
+  if(username!==usr){
+    var dm=document.createElement("button");dm.className="uc-btn";dm.textContent="Message "+username;
+    dm.onclick=function(){closeUserCard();openDM(username);};card.appendChild(dm);
+  }
+  document.body.appendChild(card);userCardEl=card;
+  var r=anchor.getBoundingClientRect();
+  card.style.left=Math.min(Math.max(8,r.left),window.innerWidth-card.offsetWidth-8)+"px";
+  card.style.top=Math.min(r.bottom+7,window.innerHeight-card.offsetHeight-8)+"px";
+}
+document.addEventListener("click",function(e){
+  var n=e.target.closest(".mn");
+  if(n){e.stopPropagation();showUserCard(n.textContent,n);}
+  else if(userCardEl&&!e.target.closest(".usercard"))closeUserCard();
+});
+
+/* NEXT 5B — ROOM UNREAD COUNTERS */
+var roomUnread={};
+try{roomUnread=JSON.parse(localStorage.getItem("tyc_room_unread")||"{}");}catch(e){roomUnread={};}
+function saveRoomUnread(){try{localStorage.setItem("tyc_room_unread",JSON.stringify(roomUnread));}catch(e){}}
+function bumpRoomUnread(key){if(!key)return;roomUnread[key]=key===roomKey?0:(roomUnread[key]||0)+1;saveRoomUnread();renderRoomUnread();}
+function clearRoomUnread(key){if(key){roomUnread[key]=0;saveRoomUnread();renderRoomUnread();}}
+function renderRoomUnread(){
+  document.querySelectorAll("[data-room-key]").forEach(function(el){
+    var n=roomUnread[el.getAttribute("data-room-key")]||0,b=el.querySelector(".unreadbadge");
+    if(n){
+      if(!b){b=document.createElement("span");b.className="unreadbadge";el.appendChild(b);}
+      b.textContent=n>99?"99+":n;
+    }else if(b)b.remove();
+  });
+}
+
+/* NEXT 5B — ATTACHMENT CARDS */
+function formatBytes(n){
+  n=Number(n)||0;
+  if(n<1024)return n+" B";
+  if(n<1048576)return (n/1024).toFixed(1)+" KB";
+  return (n/1048576).toFixed(1)+" MB";
+}
+function renderAttachment(d,wrap){
+  var f=d.file||d.attachment;
+  if(!f)return false;
+  var card=document.createElement("div");card.className="filecard";
+  var icon=document.createElement("div");icon.className="fileicon";
+  icon.textContent=(f.type&&f.type.indexOf("image/")===0)?"🖼️":"📎";
+  var meta=document.createElement("div");meta.className="filemeta";
+  var name=document.createElement("div");name.className="filename";name.textContent=f.name||"Attachment";
+  var size=document.createElement("div");size.className="filesize";size.textContent=f.size?formatBytes(f.size):"Attachment";
+  meta.appendChild(name);meta.appendChild(size);card.appendChild(icon);card.appendChild(meta);
+  if(f.url){card.onclick=function(){if(f.type&&f.type.indexOf("image/")===0)openImageViewer(f.url,f.name);else window.open(f.url,"_blank","noopener");};card.style.cursor="pointer";}
+  wrap.appendChild(card);return true;
+}
+
+/* NEXT 5B — TYPING */
+var typingTimer=null,lastTypingWrite=0;
+function setTyping(on){
+  if(!db||!roomKey)return;
+  var ref=db.collection("typing").doc(roomKey+"_"+usr);
+  if(on){
+    var now=Date.now();
+    if(now-lastTypingWrite<900)return;
+    lastTypingWrite=now;
+    ref.set({username:usr,room:roomKey,at:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}).catch(function(e){console.warn("[TYC] typing:",e);});
+    clearTimeout(typingTimer);
+    typingTimer=setTimeout(function(){setTyping(false);},2500);
+  }else{
+    ref.delete().catch(function(){});
+  }
+}
+var typingUnsub=null;
+function watchTyping(){
+  if(typingUnsub)typingUnsub();
+  if(!db||!roomKey)return;
+  var key=roomKey;
+  typingUnsub=db.collection("typing").where("room","==",key).onSnapshot(function(s){
+    var names=[];
+    s.forEach(function(doc){
+      var d=doc.data()||{};
+      if(d.username&&d.username!==usr&&Date.now()-((d.at&&d.at.toMillis)?d.at.toMillis():Date.now())<5000)names.push(d.username);
+    });
+    var el=document.getElementById("typingstatus");
+    if(!el)return;
+    el.innerHTML=names.length?(esc(names.slice(0,2).join(", "))+(names.length===1?" is typing ":" are typing ")+'<span class="typingdots"><i></i><i></i><i></i></span>'):"";
+  },function(e){console.warn("[TYC] typing listener:",e);});
+}
+
+/* NEXT 5 FEATURES */
+function toggleSearch(){
+  var box=document.getElementById("searchbox");
+  if(!box)return;
+  if(!box.classList.contains("hidden")){box.classList.add("hidden");return;}
+  box.classList.remove("hidden");
+  box.innerHTML='<input id="searchinput" placeholder="Search messages..." autocomplete="off"><div id="searchresults" class="searchresults"></div>';
+  var inp=document.getElementById("searchinput");
+  inp.oninput=function(){runSearch(inp.value);};
+  inp.focus();
+}
+function runSearch(q){
+  var box=document.getElementById("searchresults");if(!box)return;
+  q=q.trim().toLowerCase();box.innerHTML="";
+  if(!q){box.innerHTML='<div style="padding:10px;color:var(--tm);font-size:11px">Type something to search this chat.</div>';return;}
+  var hits=allMsgs.filter(function(m){return !m.deletedForAll&&!((m.hiddenFor||[]).indexOf(usr)>=0)&&((m.text||"").toLowerCase().indexOf(q)>=0);}).slice(-50).reverse();
+  if(!hits.length){box.innerHTML='<div style="padding:10px;color:var(--tm);font-size:11px">No messages found.</div>';return;}
+  hits.forEach(function(m){
+    var r=document.createElement("div");r.className="sr";
+    r.innerHTML='<div class="srwho"></div><div class="srtext"></div>';
+    r.querySelector(".srwho").textContent=m.username;
+    r.querySelector(".srtext").textContent=m.text||"";
+    r.onclick=function(){
+      var el=document.getElementById("m-"+m.id);
+      if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("mentionme");setTimeout(function(){el.classList.remove("mentionme");},1200);}
+      document.getElementById("searchbox").classList.add("hidden");
+    };
+    box.appendChild(r);
+  });
+}
+function showNewMessages(n){
+  var b=document.getElementById("newmsgbar");if(!b)return;
+  b.textContent="↓ "+n+" new message"+(n===1?"":"s");
+  b.classList.remove("hidden");
+  b.onclick=function(){scrollBot();b.classList.add("hidden");unreadCount=0;};
+}
+function hideNewMessages(){var b=document.getElementById("newmsgbar");if(b)b.classList.add("hidden");}
+function updateUnreadFromSnapshot(){
+  var mc=document.getElementById("mc");
+  if(!mc)return;
+  var nearBottom=mc.scrollHeight-mc.scrollTop-mc.clientHeight<120;
+  if(nearBottom){unreadCount=0;hideNewMessages();}
+  else if(allMsgs.length>0){
+    var count=allMsgs.filter(function(m){return !m.deletedForAll&&m.createdAt&&m.createdAt.toMillis?m.createdAt.toMillis()>lastSeenAt:!m.deletedForAll;}).length;
+    if(count>0){unreadCount=count;showNewMessages(count);}
+  }
+}
+function markSeen(){
+  lastSeenAt=Date.now();unreadCount=0;hideNewMessages();
+  var d=document.getElementById("newdivider");
+  if(d){d.textContent="Messages are up to date";d.classList.remove("hidden");setTimeout(function(){d.classList.add("hidden");},1400);}
+}
+function showNotificationsForMessage(d){
+  if(d.username!==usr && !d.deletedForAll){
+    if(document.hidden&&!isMuted(roomKey)){showNotif(d.username+" sent a message","info");playChatPing();}
+  }
+}
+document.addEventListener("visibilitychange",function(){if(!document.hidden)markSeen();});
+
+/* POLLS */
+function createPoll(question,options){
+  question=(question||"").trim();options=(options||[]).map(function(x){return x.trim();}).filter(Boolean).slice(0,6);
+  if(!db||!question||options.length<2)return;
+  var data=makeBaseMsg();
+  data.text="";data.poll={question:question,options:options,votes:{}};
+  db.collection("messages").add(data).catch(function(e){console.error("[TYC] Poll failed:",e);showNotif("Poll failed: "+(e.code||"check console"),"error");});
+}
+function votePoll(id,index){
+  if(!db)return;
+  var ref=db.collection("messages").doc(id);
+  db.runTransaction(function(tx){return tx.get(ref).then(function(doc){
+    if(!doc.exists)return;
+    var d=doc.data()||{},p=d.poll||{},votes=p.votes||{};
+    Object.keys(votes).forEach(function(k){if(Array.isArray(votes[k]))votes[k]=votes[k].filter(function(u){return u!==usr;});});
+    var arr=Array.isArray(votes[index])?votes[index].slice():[];arr.push(usr);votes[index]=arr;
+    p.votes=votes;tx.update(ref,{poll:p});
+  });}).catch(function(e){console.error("[TYC] Poll vote failed:",e);showNotif("Vote failed: "+(e.code||"check console"),"error");});
+}
+function renderPoll(d,wrap){
+  if(!d.poll)return false;
+  var p=d.poll,c=document.createElement("div");c.className="pollcard";
+  var q=document.createElement("div");q.className="pollq";q.textContent="📊 "+p.question;c.appendChild(q);
+  (p.options||[]).forEach(function(opt,i){
+    var b=document.createElement("button");b.className="pollopt";
+    var n=Array.isArray((p.votes||{})[i])?(p.votes||{})[i].length:0;
+    b.innerHTML="";var t=document.createTextNode(opt);b.appendChild(t);
+    var s=document.createElement("span");s.className="pollcount";s.textContent=n;b.appendChild(s);
+    b.onclick=function(){votePoll(d.id,i);};c.appendChild(b);
+  });
+  wrap.appendChild(c);return true;
+}
+
+/* REACTIONS */
+var REACTION_SET=["👍","😂","❤️","😭","💀","🔥","😮"];
+function reactionMap(m){
+  return (m&&m.reactions&&typeof m.reactions==="object")?m.reactions:{};
+}
+function userReacted(arr){
+  return Array.isArray(arr)&&arr.indexOf(usr)>=0;
+}
+function toggleReaction(id,emoji){
+  if(!db)return;
+  var ref=db.collection("messages").doc(id);
+  db.runTransaction(function(tx){
+    return tx.get(ref).then(function(doc){
+      if(!doc.exists)return;
+      var d=doc.data()||{},rx=d.reactions&&typeof d.reactions==="object"?d.reactions:{};
+      var arr=Array.isArray(rx[emoji])?rx[emoji].slice():[];
+      var i=arr.indexOf(usr);
+      if(i>=0)arr.splice(i,1);else arr.push(usr);
+      if(arr.length)rx[emoji]=arr;else delete rx[emoji];
+      tx.update(ref,{reactions:rx});
+    });
+  }).catch(function(e){
+    console.error("[TYC] Reaction failed:",e);
+    showNotif("Reaction failed: "+(e.code||"check console"),"error");
+  });
+}
+function openReactionPicker(anchor,id){
+  closeReactionPickers();
+  var p=document.createElement("div");
+  p.className="reactpick";
+  REACTION_SET.forEach(function(em){
+    var b=document.createElement("button");
+    b.type="button";b.textContent=em;b.title="React "+em;
+    b.onclick=function(e){e.stopPropagation();toggleReaction(id,em);p.remove();};
+    p.appendChild(b);
+  });
+  anchor.parentNode.appendChild(p);
+  var ar=anchor.getBoundingClientRect();
+  p.style.left=Math.max(0,(ar.left-10))+"px";
+  p.style.top=Math.max(4,(ar.top-42))+"px";
+  p.classList.add("floating-react");
+}
+function closeReactionPickers(){
+  document.querySelectorAll(".reactpick").forEach(function(x){x.remove();});
+}
+document.addEventListener("click",function(e){
+  if(!e.target.closest(".reactpick")&&!e.target.closest(".reactbtn"))closeReactionPickers();
+});
+function renderReactions(d,wrap){
+  var rx=reactionMap(d);
+  var keys=Object.keys(rx).filter(function(k){return Array.isArray(rx[k])&&rx[k].length;});
+  if(!keys.length)return;
+  var bar=document.createElement("div");bar.className="reacts";
+  keys.forEach(function(em){
+    var arr=rx[em];
+    var chip=document.createElement("button");
+    chip.type="button";
+    chip.className="reactchip"+(userReacted(arr)?" mine":"");
+    chip.textContent=em+" "+arr.length;
+    chip.title=(userReacted(arr)?"Remove ":"Add ")+"reaction";
+    chip.onclick=function(e){e.stopPropagation();toggleReaction(d.id,em);};
+    bar.appendChild(chip);
+  });
+  wrap.appendChild(bar);
+}
+
+
+/* PINNED MESSAGE PANEL */
+function togglePinnedPanel(){
+  var p=document.getElementById("pinpanel");
+  if(!p)return;
+  if(p.classList.contains("hidden")){
+    buildPinnedPanel();
+    p.classList.remove("hidden");
+  }else{
+    p.classList.add("hidden");
+  }
+}
+function buildPinnedPanel(){
+  var p=document.getElementById("pinpanel");
+  if(!p)return;
+  p.innerHTML='<div class="pinpanel-head"><span>📌 Pinned messages</span><button class="pinpanel-close" onclick="togglePinnedPanel()">×</button></div>';
+  var pins=allMsgs.filter(function(m){return m.pinned&&!m.deletedForAll&&!((m.hiddenFor||[]).indexOf(usr)>=0);});
+  if(!pins.length){
+    p.innerHTML+='<div style="padding:12px;color:var(--tm);font-size:12px;text-align:center">No pinned messages in this chat.</div>';
+    return;
+  }
+  pins.forEach(function(m){
+    var item=document.createElement("div");item.className="pinitem";
+    var who=document.createElement("div");who.className="pinwho";who.textContent=m.username;
+    var txt=document.createElement("div");txt.className="pintext";txt.textContent=m.text||"GIF / file";
+    item.appendChild(who);item.appendChild(txt);
+    item.onclick=function(){
+      var el=document.getElementById("m-"+m.id);
+      if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("mentionme");setTimeout(function(){el.classList.remove("mentionme");},1200);}
+      document.getElementById("pinpanel").classList.add("hidden");
+    };
+    p.appendChild(item);
+  });
+}
 
 /* CONTEXT MENU */
 function showCtx(e,id,isOwn){
@@ -1282,8 +2294,10 @@ function setupPres(){
   function w(){r.set({username:usr,avatar:usrAv,avatarUrl:usrAvUrl,room:rm,lastSeen:Date.now(),isTyping:isTyp}).catch(function(){});}
   w();hbInt=setInterval(w,PRES_TTL/2);
   document.addEventListener("visibilitychange",function(){
-    if(document.hidden){clearInterval(hbInt);r.delete().catch(function(){});}
-    else{w();hbInt=setInterval(w,PRES_TTL/2);}
+    // Keep the presence record while the tab is merely hidden/minimised.
+    // A hidden browser window is still an active classmate and should remain
+    // available in Direct Messages. The heartbeat/TTL handles stale tabs.
+    w();
   });
   window.addEventListener("beforeunload",function(){r.delete().catch(function(){});});
 }
