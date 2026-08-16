@@ -713,7 +713,7 @@ var CH_COLORS={general:"#5b7cfa",announcements:"#f5c842",memes:"#ec4899",english
 var SUBJECTS=Object.keys(CH_COLORS);
 var AVATARS=["Fox","Tiger","Frog","Panda","Unicorn","Octopus","Butterfly","Dolphin","Eagle","Dragon","Robot","Alien","Wizard","Brain","Diamond","Moon","Bolt","Fire","Wave","Pizza","Target","Crown","Circus","Art","Lion"];
 var AVATAR_EMOJIS={"Fox":"&#x1F98A;","Tiger":"&#x1F42F;","Frog":"&#x1F438;","Panda":"&#x1F43C;","Unicorn":"&#x1F984;","Octopus":"&#x1F419;","Butterfly":"&#x1F98B;","Dolphin":"&#x1F42C;","Eagle":"&#x1F985;","Dragon":"&#x1F409;","Robot":"&#x1F916;","Alien":"&#x1F47E;","Wizard":"&#x1F9D9;","Brain":"&#x1F9E0;","Diamond":"&#x1F48E;","Moon":"&#x1F319;","Bolt":"&#x26A1;","Fire":"&#x1F525;","Wave":"&#x1F30A;","Pizza":"&#x1F355;","Target":"&#x1F3AF;","Crown":"&#x1F451;","Circus":"&#x1F3AA;","Art":"&#x1F3A8;","Lion":"&#x1F981;"};
-var MAX_MSG=10000,COOL=1200,MAX_SHOW=150,PRES_TTL=120000,TYPING_TO=3000;
+var MAX_MSG=10000,COOL=1200,MAX_SHOW=10000,PRES_TTL=120000,TYPING_TO=3000;
 var TENOR="AIzaSyAyimkuYQYF_y7VMae0eSCgCFJpBt3TPSE";
 
 /* STATE */
@@ -1089,12 +1089,19 @@ function subChannel(ch){
 
   console.log("[TYC] Starting live message listener:",ch);
 
+  /*
+   * HISTORY-SAFE LISTENER
+   * ---------------------
+   * Do NOT limit the Firestore query here. A newly joined browser must be
+   * able to receive the complete room history, not just the latest N docs.
+   * We also avoid ordering in Firestore and sort in JavaScript. This means
+   * older messages are not silently excluded and this listener does not
+   * depend on the room+timestamp composite index.
+   */
   msgsUnsub=db.collection("messages")
     .where("room","==",ch)
-    .orderBy("timestamp","asc")
-    .limit(MAX_SHOW)
     .onSnapshot(function(snap){
-      console.log("[TYC] Live update:",ch,"messages:",snap.size);
+      console.log("[TYC] Live update:",ch,"messages returned:",snap.size,"(complete room-history query)");
 
       /*
        * Rebuild the visible list from Firestore on every snapshot.
@@ -1114,6 +1121,24 @@ function subChannel(ch){
       snap.forEach(function(doc){
         var d=Object.assign({id:doc.id},doc.data());
         allMsgs.push(d);
+      });
+
+      function msgTime(d){
+        var t=d&&d.timestamp;
+        if(t && typeof t.toMillis==="function") return t.toMillis();
+        if(t && typeof t.seconds==="number") return t.seconds*1000+(t.nanoseconds||0)/1000000;
+        if(typeof t==="number") return t;
+        if(typeof t==="string"){
+          var n=Date.parse(t);
+          return isNaN(n)?0:n;
+        }
+        return 0;
+      }
+
+      allMsgs.sort(function(a,b){
+        var ta=msgTime(a),tb=msgTime(b);
+        if(ta!==tb) return ta-tb;
+        return String(a.id||"").localeCompare(String(b.id||""));
       });
 
       allMsgs.forEach(function(d,i){
