@@ -728,6 +728,7 @@ var lastSend=0,typTimer=null,isTyp=false;
 var hbInt=null,presId=null;
 var rendered={},allMsgs=[];
 var pinnedId=null,replyTo=null,mentionSeen={},lastSeenAt=Date.now(),unreadCount=0;
+var roomKey="";
 var onlineUsers=[];
 var mentionSel=0;
 var editId=null;
@@ -1011,7 +1012,7 @@ function obFinish(){
 /* ENTER ROOM */
 function enterRoom(username,room,color,avatar,avatarUrl){
   rm=room;usr=username;usrColor=color;usrAv=avatar||"Fox";usrAvUrl=avatarUrl||null;
-  subj="general";isDM=false;dmPartner=null;
+  subj="general";isDM=false;dmPartner=null;roomKey=room+"::general";
   document.getElementById("hdr-room").textContent=room;
   document.getElementById("hdr-title").textContent="Class "+room+" - #general";
   var sf=document.getElementById("selfav");
@@ -1081,6 +1082,7 @@ function dmId(a,b){return[a,b].sort().join("::dm::");}
 
 /* MESSAGES */
 function subChannel(ch){
+  roomKey=ch;
   refreshMentionUsers();
   loadDraft();updateDraftCounter();
   watchTyping();
@@ -1467,7 +1469,7 @@ function getRoomRead(){
 /* NEXT 5D — MENTION AUTOCOMPLETE */
 var mentionUsers=[];
 function refreshMentionUsers(){
-  if(!db||!roomKey)return;
+  if(!db)return;
   db.collection("presence").limit(100).get().then(function(s){
     mentionUsers=[];s.forEach(function(doc){var d=doc.data()||{};if(d.username)mentionUsers.push(d.username);});
     mentionUsers=[...new Set(mentionUsers)].sort(function(a,b){return a.localeCompare(b);});
