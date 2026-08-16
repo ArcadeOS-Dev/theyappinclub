@@ -438,6 +438,9 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
 .user-search-list{max-height:260px;overflow:auto}.user-search-item{padding:8px;border-radius:8px;cursor:pointer}.user-search-item:hover{background:var(--hover)}
 .yc-countdown{font-variant-numeric:tabular-nums;color:var(--tm);font-size:9px}
 
+
+/* ADMIN MODE */
+.adminbtn{padding:6px 11px;border-radius:9px;border:1px solid rgba(245,200,66,.28);background:rgba(245,200,66,.08);color:var(--gold);font-weight:800;font-size:12px;cursor:pointer}.adminbtn:hover{background:rgba(245,200,66,.16);border-color:rgba(245,200,66,.5)}.adminbadge{display:none;align-items:center;gap:6px;padding:5px 9px;border-radius:9px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.28);color:var(--gold);font:700 11px var(--fm)}.adminbadge.on{display:flex}.admin-card{width:min(560px,calc(100vw - 32px))!important;max-height:82vh;overflow:auto}.admin-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.admin-head h3{margin:0}.admin-note{font-size:11px;color:var(--tm);line-height:1.55;margin:8px 0 14px}.admin-field{width:100%;padding:11px 12px;border:1px solid var(--bds);border-radius:9px;background:var(--inp);color:var(--tp);outline:none;margin-top:6px}.admin-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}.admin-user{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--bd);border-radius:10px;margin-top:7px;background:var(--surf)}.admin-user .au-name{font-weight:700;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.admin-user .au-dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:0 0 8px var(--grn)}.admin-user.off .au-dot{background:var(--tm);box-shadow:none}.admin-mini{font-size:10px;color:var(--tm);font-family:var(--fm)}.admin-danger{border-color:rgba(255,94,108,.35)!important;color:var(--red)!important;background:var(--red-d)!important}.admin-gold{border-color:rgba(245,200,66,.35)!important;color:var(--gold)!important;background:rgba(245,200,66,.08)!important}.admin-tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.admin-tools .btn{font-size:11px}
 </style>
 </head>
 <body>
@@ -469,6 +472,7 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
       <button class="nlink" onclick="document.getElementById('feats').scrollIntoView({behavior:'smooth'})">Features</button>
       <button class="nlink" onclick="showAbout()">About</button>
       <button class="tbtn" id="home-tbtn" onclick="toggleTheme()">&#x1F319;</button>
+      <button class="adminbtn" onclick="openAdminLogin()">&#x1F6E1; Admin</button>
       <button class="ncta" onclick="startOnboard()">Join a Room &rarr;</button>
     </div>
   </nav>
@@ -601,7 +605,9 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
       <button class="bic" onclick="searchUsers()" title="Find people" aria-label="Find people">👥</button>
       <button class="bic" onclick="openChatSettings()" title="Chat settings" aria-label="Chat settings">⚙</button>
       <button class="bic" onclick="runChatDiagnostics()" title="Diagnostics" aria-label="Diagnostics">🩺</button>
+      <button class="bic" id="admin-chat-btn" onclick="openAdminPanel()" title="Admin controls" aria-label="Admin controls" style="display:none">🛡️</button>
       <button class="bic" onclick="clearView()">&#x1F9F9;</button>
+      <span class="adminbadge" id="admin-badge">🛡 ADMIN</span>
     </div>
   </div>
   <div id="searchbox" class="searchbox hidden"></div>
@@ -732,13 +738,30 @@ var roomKey="";
 var onlineUsers=[];
 var mentionSel=0;
 var editId=null;
+var isAdmin=false;
+var adminBanUnsub=null;
 var ob={step:0,parentEmail:"",fullName:"",section:null,username:"",avatar:"Fox",avatarUrl:null};
 var ddOpen=false;
 var pendingFile=null,avFileData=null;
 
+/* ADMIN MODE — client-side moderator controls */
+function adminSetUI(){var b=document.getElementById("admin-badge"),c=document.getElementById("admin-chat-btn");if(b)b.classList.toggle("on",isAdmin);if(c)c.style.display=isAdmin?"flex":"none";}
+function closeAdminModal(){var m=document.getElementById("admin-modal");if(m)m.remove();}
+function openAdminLogin(){if(isAdmin){openAdminPanel();return;}closeAdminModal();var m=document.createElement("div");m.id="admin-modal";m.className="yc-modal";var c=document.createElement("div");c.className="yc-card admin-card";c.innerHTML='<button class="yc-close" id="admin-close">×</button><div class="admin-head"><h3>🛡 Admin login</h3><span class="admin-mini">moderator access</span></div><div class="admin-note">Enter the moderator credentials to enable the extra controls. Admin mode lasts for this page session. For a real public app, move admin authentication to Firebase Auth/custom claims.</div><label class="fl">Username</label><input class="admin-field" id="admin-user" autocomplete="username" placeholder="Admin username"><label class="fl" style="display:block;margin-top:10px">Password</label><input class="admin-field" id="admin-pass" type="password" autocomplete="current-password" placeholder="Admin password"><div id="admin-login-err" class="emsg hidden" style="margin-top:9px"></div><div class="admin-actions"><button class="btn" id="admin-cancel">Cancel</button><button class="btn admin-gold" id="admin-login-btn">Unlock admin</button></div>';m.appendChild(c);document.body.appendChild(m);document.getElementById("admin-close").onclick=closeAdminModal;document.getElementById("admin-cancel").onclick=closeAdminModal;document.getElementById("admin-login-btn").onclick=adminLogin;document.getElementById("admin-pass").addEventListener("keydown",function(e){if(e.key==="Enter")adminLogin();});setTimeout(function(){document.getElementById("admin-user").focus();},40);}
+function adminLogin(){var u=(document.getElementById("admin-user")||{}).value||"",p=(document.getElementById("admin-pass")||{}).value||"",err=document.getElementById("admin-login-err");if(u==="zestyadmin67"&&p==="meowwoodhighismyname"){isAdmin=true;adminSetUI();closeAdminModal();showNotif("Admin mode enabled","success");if(document.getElementById("chat").classList.contains("active"))openAdminPanel();else showAdminWelcome();}else if(err){err.textContent="Invalid admin credentials.";err.classList.remove("hidden");}}
+function adminLogout(){isAdmin=false;if(adminBanUnsub){adminBanUnsub();adminBanUnsub=null;}adminSetUI();closeAdminModal();showNotif("Admin mode disabled","info");}
+function showAdminWelcome(){var m=document.createElement("div");m.className="yc-modal";var c=document.createElement("div");c.className="yc-card admin-card";c.innerHTML='<button class="yc-close">×</button><div class="admin-head"><h3>🛡 Admin mode enabled</h3></div><p class="statusmsg">Join a room normally. Once you enter, the 🛡 button in the chat header opens your moderator controls.</p><div class="admin-tools"><button class="btn admin-gold" id="admin-join">Join a room</button><button class="btn" id="admin-panel-home">Admin controls</button><button class="btn admin-danger" id="admin-logout">Log out</button></div>';m.appendChild(c);document.body.appendChild(m);c.querySelector(".yc-close").onclick=function(){m.remove();};document.getElementById("admin-join").onclick=function(){m.remove();startOnboard();};document.getElementById("admin-panel-home").onclick=function(){m.remove();openAdminPanel();};document.getElementById("admin-logout").onclick=function(){m.remove();adminLogout();};}
+function adminDeleteMessage(id){if(!isAdmin||!db)return;askConfirm("Admin: delete for everyone?","This will replace the message with the deleted-message tag for everyone.",function(){db.collection("messages").doc(id).update({deletedForAll:true,text:"",adminModified:true,adminModifiedBy:usr||"zestyadmin67"}).then(function(){showNotif("Message deleted for everyone","success");}).catch(function(e){console.error("[TYC] Admin delete failed:",e);showNotif("Admin delete failed: "+(e.code||"check console"),"error");});});}
+function adminAnnounce(){if(!isAdmin||!db||!rm)return;var text=prompt("Announcement for this room:");if(!text||!text.trim())return;db.collection("messages").add({text:text.trim(),room:rm+"::"+(subj||"general"),username:"Yapping Club Admin",avatar:"Crown",timestamp:firebase.firestore.FieldValue.serverTimestamp(),type:"system",admin:true}).then(function(){showNotif("Announcement sent","success");}).catch(function(e){showNotif("Announcement failed: "+(e.code||"check console"),"error");});}
+function adminClearRoom(){if(!isAdmin||!db||!rm)return;askConfirm("Admin: clear this channel?","This permanently marks every message in the current channel as deleted for everyone. This cannot be undone.",function(){var ch=isDM?dmId(usr,dmPartner):rm+"::"+(subj||"general");db.collection("messages").where("room","==",ch).limit(300).get().then(function(snap){var batch=db.batch();snap.forEach(function(d){batch.update(d.ref,{deletedForAll:true,text:"",adminModified:true,adminModifiedBy:usr||"zestyadmin67"});});return batch.commit();}).then(function(){showNotif("Channel cleared","success");}).catch(function(e){console.error(e);showNotif("Clear failed: "+(e.code||"check console"),"error");});});}
+function adminRemoveUser(username){if(!isAdmin||!db||!rm||!username||username===usr)return;askConfirm("Remove "+username+"?","This kicks the user out of the current room. They can join again later.",function(){db.collection("presence").where("room","==",rm).where("username","==",username).get().then(function(snap){var batch=db.batch();snap.forEach(function(d){batch.delete(d.ref);});return batch.commit();}).then(function(){showNotif(username+" was removed from the room","success");}).catch(function(e){console.error("[TYC] Admin remove failed:",e);showNotif("Remove failed: "+(e.code||"check console"),"error");});});}
+function watchAdminBan(){/* Persistent bans require Firebase Auth/custom claims; this build only supports live room kicks. */}
+function openAdminPanel(){if(!isAdmin){openAdminLogin();return;}var m=document.createElement("div");m.id="admin-modal";m.className="yc-modal";var c=document.createElement("div");c.className="yc-card admin-card";var room=rm||"No room";c.innerHTML='<button class="yc-close">×</button><div class="admin-head"><h3>🛡 Admin controls</h3><span class="admin-mini">'+esc(room)+'</span></div><div class="admin-note">Moderator tools for the current room.</div><div class="admin-tools"><button class="btn admin-gold" id="adm-ann">📢 Announce</button><button class="btn" id="adm-clear">🧹 Clear channel</button><button class="btn admin-danger" id="adm-out">Log out</button></div><h4 style="margin-top:18px">People in this room</h4><div id="admin-users"></div><div class="admin-note" style="margin-top:14px">Tip: in admin mode, open any message menu to edit, pin, or delete it regardless of who sent it.</div>';m.appendChild(c);document.body.appendChild(m);c.querySelector(".yc-close").onclick=function(){m.remove();};document.getElementById("adm-ann").onclick=adminAnnounce;document.getElementById("adm-clear").onclick=adminClearRoom;document.getElementById("adm-out").onclick=function(){m.remove();adminLogout();};var box=document.getElementById("admin-users"),users=allRoomUsers.slice().sort(function(a,b){return a.localeCompare(b);});if(!users.length)box.innerHTML='<div class="statusmsg">No classmates found.</div>';users.forEach(function(u){var row=document.createElement("div");row.className="admin-user"+(onlineUsers.indexOf(u)<0?" off":"");var dot=document.createElement("span");dot.className="au-dot";var nm=document.createElement("span");nm.className="au-name";nm.textContent=u+(u===usr?" (you)":"");row.appendChild(dot);row.appendChild(nm);if(u!==usr){var b=document.createElement("button");b.className="btn admin-danger";b.textContent="Remove";b.onclick=function(){adminRemoveUser(u);};row.appendChild(b);}box.appendChild(row);});}
+
 /* INIT */
 function init(){
   loadTheme();
+  adminSetUI();
   showHome();
   try{
     firebase.initializeApp(FC);
@@ -1012,7 +1035,9 @@ function obFinish(){
 /* ENTER ROOM */
 function enterRoom(username,room,color,avatar,avatarUrl){
   rm=room;usr=username;usrColor=color;usrAv=avatar||"Fox";usrAvUrl=avatarUrl||null;
-  subj="general";isDM=false;dmPartner=null;roomKey=room+"::general";
+  roomKey=room+"::general";
+  subj="general";isDM=false;dmPartner=null;
+  adminSetUI();roomKey=room+"::general";
   document.getElementById("hdr-room").textContent=room;
   document.getElementById("hdr-title").textContent="Class "+room+" - #general";
   var sf=document.getElementById("selfav");
@@ -1021,7 +1046,7 @@ function enterRoom(username,room,color,avatar,avatarUrl){
   document.getElementById("selfnm").textContent=username;
   document.getElementById("selfrm").textContent="Room "+room;
   var cs=document.getElementById("chat");cs.style.opacity="1";cs.style.pointerEvents="all";cs.classList.add("active");
-  buildChs();buildDMs();setupPres();subPres();
+  buildChs();buildDMs();setupPres();subPres();watchAdminBan();
   subChannel(room+"::general");
   sysMsg(username+" joined the room",room+"::general");
   showNotif("Joined "+room+" #general as "+username,"success");
@@ -1271,7 +1296,7 @@ function renderMsg(d,idx,container){
   });
   acts.appendChild(pinBtn);
 
-  if(isOwn&&!d.deletedForAll){
+  if((isOwn||isAdmin)&&!d.deletedForAll){
     var editBtn=document.createElement("button");
     editBtn.className="mab";
     editBtn.title="Edit";
@@ -2290,17 +2315,20 @@ function showCtx(e,id,isOwn){
     menu.appendChild(item);
   }
 
-  if(isOwn){
-    addCtxItem("Edit","",function(){startEdit(id);});
+  if(isOwn||isAdmin){
+    addCtxItem(isAdmin&&!isOwn?"Admin: Edit":"Edit","",function(){startEdit(id);});
   }
-  addCtxItem("Pin / Unpin","gold",function(){togglePin(id);});
+  addCtxItem(isAdmin?"Admin: Pin / Unpin":"Pin / Unpin","gold",function(){togglePin(id);});
   addCtxItem("Reply","",function(){setReply(getMsgById(id));});
 
   var sep=document.createElement("div");
   sep.className="ctxsep";
   menu.appendChild(sep);
 
-  if(isOwn){
+  if(isAdmin){
+    addCtxItem("Delete for me","danger",function(){deleteForMe(id);});
+    addCtxItem("Admin: Delete for everyone","danger",function(){adminDeleteMessage(id);});
+  }else if(isOwn){
     addCtxItem("Delete for me","danger",function(){deleteForMe(id);});
     addCtxItem("Delete for everyone","danger",function(){deleteForAll(id);});
   }else{
