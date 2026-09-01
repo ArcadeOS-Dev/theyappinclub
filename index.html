@@ -197,6 +197,7 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
 .ddsw{padding:9px 9px 7px;border-bottom:1px solid var(--bd)}
 .dds{width:100%;padding:7px 11px;background:var(--inp);border:1px solid var(--bd);border-radius:8px;color:var(--tp);font-size:13px;outline:none}
 .dds:focus{border-color:var(--acc)}.dds::placeholder{color:var(--tg)}
+.teacher-ddi{border:1px solid var(--bds);background:var(--elev)}.teacher-ddi:hover{border-color:var(--acc-b);background:var(--acc-d)}
 .ddlist{max-height:190px;overflow-y:auto;padding:3px}
 .ddgrade{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--tg);padding:7px 9px 3px;font-family:var(--fm)}
 .ddi{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;cursor:pointer;transition:background .12s;font-size:13px;font-weight:600}
@@ -292,6 +293,17 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
 .msugit:hover,.msugit.sel{background:var(--hover)}
 .msugav{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
 .msugnm{font-size:13px;font-weight:600}
+.imgfp .fpthumb{width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid var(--bd)}
+.fpst{font-size:11px;color:var(--ts)}.fpst.err{color:var(--red)}
+.fppg{flex:1;height:4px;background:var(--inp);border-radius:4px;overflow:hidden;min-width:50px}
+.fppgf{display:block;height:100%;background:var(--acc);transition:width .2s}
+.mimgwrap{position:relative;max-width:min(300px,72vw)}
+.mimgwrap .mimg{width:100%;max-width:100%;height:auto;border-radius:10px}
+.mimgload{font-size:11px;color:var(--tm);padding:6px 0}
+.mimgload.err{color:var(--red)}
+.mimgcap{margin-top:5px}
+.tyclb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:9999;padding:24px;cursor:zoom-out}
+.tyclb img{max-width:100%;max-height:100%;border-radius:12px}
 .fpbar{display:flex;align-items:center;gap:9px;padding:7px 11px;background:var(--elev);border:1px solid var(--bd);border-radius:12px;margin-bottom:7px}
 .fpic{font-size:18px}.fpnm{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;font-weight:500}
 .fpsz{font-size:10px;color:var(--tm);font-family:var(--fm)}.fprm{background:none;border:none;color:var(--tm);cursor:pointer;font-size:15px;padding:0}
@@ -439,8 +451,26 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
 .yc-countdown{font-variant-numeric:tabular-nums;color:var(--tm);font-size:9px}
 
 
-/* ADMIN MODE */
-.adminbtn{padding:6px 11px;border-radius:9px;border:1px solid rgba(245,200,66,.28);background:rgba(245,200,66,.08);color:var(--gold);font-weight:800;font-size:12px;cursor:pointer}.adminbtn:hover{background:rgba(245,200,66,.16);border-color:rgba(245,200,66,.5)}.adminbadge{display:none;align-items:center;gap:6px;padding:5px 9px;border-radius:9px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.28);color:var(--gold);font:700 11px var(--fm)}.adminbadge.on{display:flex}.admin-card{width:min(560px,calc(100vw - 32px))!important;max-height:82vh;overflow:auto}.admin-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.admin-head h3{margin:0}.admin-note{font-size:11px;color:var(--tm);line-height:1.55;margin:8px 0 14px}.admin-field{width:100%;padding:11px 12px;border:1px solid var(--bds);border-radius:9px;background:var(--inp);color:var(--tp);outline:none;margin-top:6px}.admin-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}.admin-user{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--bd);border-radius:10px;margin-top:7px;background:var(--surf)}.admin-user .au-name{font-weight:700;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.admin-user .au-dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:0 0 8px var(--grn)}.admin-user.off .au-dot{background:var(--tm);box-shadow:none}.admin-mini{font-size:10px;color:var(--tm);font-family:var(--fm)}.admin-danger{border-color:rgba(255,94,108,.35)!important;color:var(--red)!important;background:var(--red-d)!important}.admin-gold{border-color:rgba(245,200,66,.35)!important;color:var(--gold)!important;background:rgba(245,200,66,.08)!important}.admin-tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.admin-tools .btn{font-size:11px}
+/* TEACHER PORTAL */
+.teacher-screen{position:fixed;inset:0;z-index:115;background:var(--bg);overflow:auto;padding:28px 16px}
+.teacher-wrap{width:min(720px,100%);margin:0 auto}
+.teacher-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.teacher-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+.teacher-badge{font:600 10px var(--fm);color:var(--grn);background:var(--grn-d);border:1px solid rgba(61,214,140,.2);padding:5px 9px;border-radius:99px}
+.teacher-card{background:var(--surf);border:1px solid var(--bds);border-radius:18px;padding:22px;box-shadow:var(--sh-lg);margin-bottom:14px}
+.teacher-card h2{font-size:21px;margin-bottom:5px}.teacher-card p{font-size:12px;color:var(--ts);line-height:1.6}
+.teacher-drop{margin-top:18px;border:1.5px dashed var(--bds);border-radius:15px;padding:34px 20px;text-align:center;background:var(--inp);cursor:pointer;transition:all .2s}
+.teacher-drop:hover,.teacher-drop.drag{border-color:var(--acc-b);background:var(--acc-d);transform:translateY(-1px)}
+.teacher-drop .tdi{font-size:34px;margin-bottom:8px}.teacher-drop strong{display:block;font-size:14px}.teacher-drop span{display:block;color:var(--tm);font-size:11px;margin-top:4px}
+.teacher-file{display:flex;align-items:center;gap:10px;margin-top:12px;padding:10px 12px;background:var(--elev);border:1px solid var(--bd);border-radius:10px}
+.teacher-file .tfname{flex:1;min-width:0;font-size:12px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.teacher-file .tfsz{font:10px var(--fm);color:var(--tm)}
+.teacher-file button{border:0;background:none;color:var(--red);cursor:pointer;font-size:16px}
+.teacher-row{display:flex;gap:10px;margin-top:14px}.teacher-row>*{flex:1}.teacher-select{width:100%;padding:10px 12px;background:var(--inp);border:1px solid var(--bd);border-radius:10px;color:var(--tp);outline:none}
+.teacher-publish{width:100%;padding:12px;background:var(--acc);color:#fff;border:0;border-radius:11px;font-weight:800;cursor:pointer}.teacher-publish:disabled{opacity:.4;cursor:not-allowed}
+.teacher-back{padding:8px 12px;background:var(--elev);border:1px solid var(--bd);color:var(--ts);border-radius:9px;cursor:pointer}
+.teacher-lock{width:min(390px,100%);margin:12vh auto;background:var(--surf);border:1px solid var(--bds);border-radius:18px;box-shadow:var(--sh-lg);padding:24px}
+.teacher-lock h2{margin-bottom:6px}.teacher-lock p{font-size:12px;color:var(--ts);margin-bottom:16px}.teacher-lock .fi{margin-bottom:8px}
+@media(max-width:600px){.teacher-row{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -470,9 +500,8 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
     </div>
     <div class="nlinks">
       <button class="nlink" onclick="document.getElementById('feats').scrollIntoView({behavior:'smooth'})">Features</button>
-      <button class="nlink" onclick="showAbout()">About</button>
+      <button class="nlink" onclick="showAbout()">About</button><button class="nlink" onclick="openTeachers()">Teachers</button>
       <button class="tbtn" id="home-tbtn" onclick="toggleTheme()">&#x1F319;</button>
-      <button class="adminbtn" onclick="openAdminLogin()">&#x1F6E1; Admin</button>
       <button class="ncta" onclick="startOnboard()">Join a Room &rarr;</button>
     </div>
   </nav>
@@ -539,54 +568,24 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
   <div class="ahero">
     <div class="aav">SK</div>
     <div class="anm">Sathvik Kasthala</div>
-    <div class="amet">Age 12 &middot; Greenwood High School &middot; Builder &middot; Yapper</div>
-    <div class="abio">Sathvik is a 12-year-old developer from Greenwood High who builds web apps for his classmates. The Yapping Club was born from one conversation with his friend Sanav Srivastava.</div>
+    <div class="amet">Age 23 &middot; Greenwood High School &middot; Builder &middot; Yapper</div>
+    <div class="abio">Sathvik is a 23-year-old developer from Greenwood High who builds web apps for his classmates. The Yapping Club was born from one conversation with his friend Sanav Srivastava.</div>
   </div>
   <div class="asec">
     <div class="acard">
       <div class="acardt">The Origin Story</div>
       <div class="convo">
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">bro i’m done with this dead internet life</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">same there’s literally nowhere to just TALK without getting watched 😭</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">nah wait… what if we just… make our own place</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">like what, another dead server? 💀</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">no no hear me out — a site where ppl can just hop in and yap</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">no teachers, no “stay on topic”, just pure chaos??</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">EXACTLY</div></div></div>
-
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">wait that’s actually kinda fire</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">we call it… YapStudy</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">💀 why that name</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">so it sounds “educational” if anyone asks</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">nah that’s genius 😭</div></div></div>
-
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">features: random chat rooms, no pressure, just join n talk</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">and like “fake study rooms” where nobody studies</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">just ppl saying “starting in 5 mins” for 2 hours</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">realest thing ever</div></div></div>
-
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">also no read receipts</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">W FEATURE</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">and no teachers spawning from the void like on Microsoft Teams</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">biggest selling point fr</div></div></div>
-
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">bro imagine opening it and there’s ACTUAL ppl online</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">unemployed ppl finally got a habitat</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">we’re saving a whole community rn</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">this is history</div></div></div>
-
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">ok but who’s coding it</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">…you</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">bro 😭</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">i’ll be moral support</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">so nothing</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">exactly</div></div></div>
-
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">fine but when this blows up don’t act like u weren’t there</div></div></div>
-        <div class="cm r"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn" style="text-align:right">Sanav</div><div class="cb">nah i’m co-founder in bio instantly</div></div></div>
-        <div class="cm"><div class="cav" style="background:#5b7cfa;color:#fff">S</div><div><div class="cn">Sathvik</div><div class="cb">of course you are 💀</div></div></div>
+        <div class="cm"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn">Sanav</div><div class="cb">bro no cap we need smth for class like discord but only our section can get in</div></div></div>
+        <div class="cm r"><div class="cav" style="background:#5b7cfa;color:#fff">K</div><div><div class="cn" style="text-align:right">Sathvik</div><div class="cb">ngl that is lowkey goated like password locked rooms fr fr</div></div></div>
+        <div class="cm"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn">Sanav</div><div class="cb">yoooo and teachers wont even know it exists</div></div></div>
+        <div class="cm r"><div class="cav" style="background:#5b7cfa;color:#fff">K</div><div><div class="cn" style="text-align:right">Sathvik</div><div class="cb">bro ima build ts rn. firebase plus one html file lets gooo</div></div></div>
+        <div class="cm"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn">Sanav</div><div class="cb">W rizz on the keyboard fr what we calling it</div></div></div>
+        <div class="cm r"><div class="cav" style="background:#5b7cfa;color:#fff">K</div><div><div class="cn" style="text-align:right">Sathvik</div><div class="cb">The Yapping Club. because thats literally what we do</div></div></div>
+        <div class="cm"><div class="cav" style="background:#f97316;color:#fff">S</div><div><div class="cn">Sanav</div><div class="cb">LMAOOO actual sigma move fr fr. SHIP IT</div></div></div>
+        <div class="cm r"><div class="cav" style="background:#5b7cfa;color:#fff">K</div><div><div class="cn" style="text-align:right">Sathvik</div><div class="cb">already deployed bestie. we are so back</div></div></div>
       </div>
-    </div><div class="acard">
+    </div>
+    <div class="acard">
       <div class="acardt">More Projects by Sathvik</div>
       <div class="projs">
         <a class="proj" href="https://arcadeos-dev.github.io/Arcade-OS" target="_blank"><div class="projic">&#x1F579;&#xFE0F;</div><div class="projt">Arcade OS</div><div class="projd">Full browser gaming platform, no downloads needed.</div><span class="projl">arcadeos-dev.github.io/Arcade-OS</span></a>
@@ -600,8 +599,30 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
 </div>
 
 <input type="file" id="file-input" accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip" style="display:none" onchange="onFileSelected(this)"/>
+<input type="file" id="img-input" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none" onchange="onImgSelected(this)"/>
 <input type="file" id="av-file-input" accept="image/*" style="display:none" onchange="onAvFile(this)"/>
 
+
+<!-- TEACHER PORTAL -->
+<div id="teachers-screen" class="teacher-screen hidden">
+  <div class="teacher-wrap">
+    <div class="teacher-top"><div class="teacher-brand"><div class="nlogo-ic"><svg width="18" height="18"><use href="#tyc-logo"/></svg></div>The Yapping Club <span class="teacher-badge">TEACHER PORTAL</span></div><button class="teacher-back" onclick="closeTeachers()">Back</button></div>
+    <div id="teacher-lock" class="teacher-lock">
+      <h2>Teachers</h2><p>Enter the teacher portal password to continue.</p>
+      <input id="teacher-pw" class="fi" type="password" placeholder="Teacher password" autocomplete="off" onkeydown="if(event.key==='Enter')teacherLogin()"/>
+      <div id="teacher-pw-err" class="emsg hidden"></div>
+      <button class="bob" style="width:100%;margin-top:10px" onclick="teacherLogin()">Unlock teacher portal &rarr;</button>
+    </div>
+    <div id="teacher-app" class="hidden">
+      <div class="teacher-card"><h2>Publish a file</h2><p>Upload a worksheet, PDF, document, image, or other class resource. The file will be published to the selected class's <strong>#announcements</strong> channel.</p>
+        <div id="teacher-drop" class="teacher-drop" onclick="document.getElementById('teacher-file-input').click()" ondragover="teacherDragOver(event)" ondragleave="teacherDragLeave(event)" ondrop="teacherDrop(event)"><div class="tdi">📎</div><strong>Choose a file or drag & drop it here</strong><span>Maximum 5 GB</span></div>
+        <input id="teacher-file-input" type="file" style="display:none" onchange="teacherFileSelected(this)"/>
+        <div id="teacher-file-preview" class="hidden"></div>
+        <div class="teacher-row"><select id="teacher-target" class="teacher-select"><option value="6A">Class 6A</option><option value="6B">Class 6B</option><option value="6C">Class 6C</option><option value="6D">Class 6D</option><option value="6E">Class 6E</option><option value="6F">Class 6F</option><option value="6G">Class 6G</option><option value="6H">Class 6H</option><option value="6I">Class 6I</option><option value="7A">Class 7A</option><option value="7B">Class 7B</option><option value="7C">Class 7C</option><option value="7D">Class 7D</option><option value="7E">Class 7E</option><option value="7F">Class 7F</option><option value="7G">Class 7G</option><option value="7H">Class 7H</option><option value="7I">Class 7I</option><option value="8A">Class 8A</option><option value="8B">Class 8B</option><option value="8C">Class 8C</option><option value="8D">Class 8D</option><option value="8E">Class 8E</option><option value="8F">Class 8F</option><option value="8G">Class 8G</option><option value="8H">Class 8H</option><option value="8I">Class 8I</option><option value="9A">Class 9A</option><option value="9B">Class 9B</option><option value="9C">Class 9C</option><option value="9D">Class 9D</option><option value="9E">Class 9E</option><option value="9F">Class 9F</option><option value="9G">Class 9G</option><option value="9H">Class 9H</option><option value="9I">Class 9I</option><option value="10A">Class 10A</option><option value="10B">Class 10B</option><option value="10C">Class 10C</option><option value="10D">Class 10D</option><option value="10E">Class 10E</option><option value="10F">Class 10F</option><option value="10G">Class 10G</option><option value="10H">Class 10H</option><option value="10I">Class 10I</option></select><button id="teacher-publish" class="teacher-publish" disabled onclick="teacherPublish()">Publish file</button></div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- ONBOARD -->
 <div id="ob" class="hidden">
   <div class="obc">
@@ -635,9 +656,7 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
       <button class="bic" onclick="searchUsers()" title="Find people" aria-label="Find people">👥</button>
       <button class="bic" onclick="openChatSettings()" title="Chat settings" aria-label="Chat settings">⚙</button>
       <button class="bic" onclick="runChatDiagnostics()" title="Diagnostics" aria-label="Diagnostics">🩺</button>
-      <button class="bic" id="admin-chat-btn" onclick="openAdminPanel()" title="Admin controls" aria-label="Admin controls" style="display:none">🛡️</button>
       <button class="bic" onclick="clearView()">&#x1F9F9;</button>
-      <span class="adminbadge" id="admin-badge">🛡 ADMIN</span>
     </div>
   </div>
   <div id="searchbox" class="searchbox hidden"></div>
@@ -678,6 +697,7 @@ body.lm .hnav{background:rgba(240,242,248,.92)}
               <div class="gnote">Powered by Tenor</div>
             </div>
           </div>
+          <button class="tbb" title="Attach image" aria-label="Attach image" onclick="document.getElementById('img-input').click()">🖼</button>
           <button class="tbb" onclick="document.getElementById('file-input').click()">clip</button>
           <button class="tbb" onclick="insertAt('@')">@</button>
         </div>
@@ -749,49 +769,125 @@ var CH_COLORS={general:"#5b7cfa",announcements:"#f5c842",memes:"#ec4899",english
 var SUBJECTS=Object.keys(CH_COLORS);
 var AVATARS=["Fox","Tiger","Frog","Panda","Unicorn","Octopus","Butterfly","Dolphin","Eagle","Dragon","Robot","Alien","Wizard","Brain","Diamond","Moon","Bolt","Fire","Wave","Pizza","Target","Crown","Circus","Art","Lion"];
 var AVATAR_EMOJIS={"Fox":"&#x1F98A;","Tiger":"&#x1F42F;","Frog":"&#x1F438;","Panda":"&#x1F43C;","Unicorn":"&#x1F984;","Octopus":"&#x1F419;","Butterfly":"&#x1F98B;","Dolphin":"&#x1F42C;","Eagle":"&#x1F985;","Dragon":"&#x1F409;","Robot":"&#x1F916;","Alien":"&#x1F47E;","Wizard":"&#x1F9D9;","Brain":"&#x1F9E0;","Diamond":"&#x1F48E;","Moon":"&#x1F319;","Bolt":"&#x26A1;","Fire":"&#x1F525;","Wave":"&#x1F30A;","Pizza":"&#x1F355;","Target":"&#x1F3AF;","Crown":"&#x1F451;","Circus":"&#x1F3AA;","Art":"&#x1F3A8;","Lion":"&#x1F981;"};
-var MAX_MSG=10000,COOL=1200,MAX_SHOW=10000,PRES_TTL=120000,TYPING_TO=3000;
+var MAX_MSG=10000,COOL=1200,MAX_SHOW=150,PRES_TTL=120000,TYPING_TO=3000;
 var TENOR="AIzaSyAyimkuYQYF_y7VMae0eSCgCFJpBt3TPSE";
 
 /* STATE */
 var db=null,st=null;
+var ycPendingWrites=0;
 var rm=null,usr=null,usrColor=null,usrAv="Fox",usrAvUrl=null;
 var subj="general",isDM=false,dmPartner=null;
 var msgsUnsub=null,presUnsub=null,allRoomUsers=[];
-var pendingMessageWrites=0;
-var pendingLeaveTimer=null;
-
 var lastSend=0,typTimer=null,isTyp=false;
 var hbInt=null,presId=null;
 var rendered={},allMsgs=[];
 var pinnedId=null,replyTo=null,mentionSeen={},lastSeenAt=Date.now(),unreadCount=0;
-var roomKey="";
 var onlineUsers=[];
 var mentionSel=0;
 var editId=null;
-var isAdmin=false;
-var adminBanUnsub=null;
 var ob={step:0,parentEmail:"",fullName:"",section:null,username:"",avatar:"Fox",avatarUrl:null};
 var ddOpen=false;
 var pendingFile=null,avFileData=null;
+/* ===== CLOUDINARY (image storage only; Firestore stays the source of truth) ===== */
+/* Cloud name + unsigned upload preset are public identifiers (safe to ship in client code);
+   the secret API key is never used here. Fallback lets the file work standalone (file:// or any host). */
+var CLOUDINARY={cloudName:"haacagp8",uploadPreset:"tyc_images",folder:"tyc/images",maxBytes:10*1024*1024,
+  allowed:["image/png","image/jpeg","image/jpg","image/webp","image/gif"]};
+try{fetch("/api/public/tyc-config").then(function(r){return r.ok?r.json():null;}).then(function(c){
+  if(c&&c.cloudName)CLOUDINARY.cloudName=c.cloudName;
+  if(c&&c.uploadPreset)CLOUDINARY.uploadPreset=c.uploadPreset;
+}).catch(function(){});}catch(e){}
+var pendingImage=null,pendingImagePreview=null,imgUploading=false;
+function cldUpload(file,onProgress){
+  return new Promise(function(res,rej){
+    if(!CLOUDINARY.cloudName||!CLOUDINARY.uploadPreset){rej(new Error("Cloudinary is not configured"));return;}
+    var fd=new FormData();
+    fd.append("file",file);fd.append("upload_preset",CLOUDINARY.uploadPreset);
+    if(CLOUDINARY.folder)fd.append("folder",CLOUDINARY.folder);
+    var xhr=new XMLHttpRequest();
+    xhr.open("POST","https://api.cloudinary.com/v1_1/"+CLOUDINARY.cloudName+"/image/upload");
+    xhr.upload.onprogress=function(e){if(e.lengthComputable&&onProgress)onProgress(Math.round(e.loaded/e.total*100));};
+    xhr.onload=function(){
+      try{var d=JSON.parse(xhr.responseText);
+        if(xhr.status>=200&&xhr.status<300&&d.secure_url)res(d);
+        else rej(new Error((d.error&&d.error.message)||"Upload failed"));
+      }catch(err){rej(new Error("Upload failed"));}
+    };
+    xhr.onerror=function(){rej(new Error("Network error during upload"));};
+    xhr.send(fd);
+  });
+}
 
-/* ADMIN MODE — client-side moderator controls */
-function adminSetUI(){var b=document.getElementById("admin-badge"),c=document.getElementById("admin-chat-btn");if(b)b.classList.toggle("on",isAdmin);if(c)c.style.display=isAdmin?"flex":"none";}
-function closeAdminModal(){var m=document.getElementById("admin-modal");if(m)m.remove();}
-function openAdminLogin(){if(isAdmin){openAdminPanel();return;}closeAdminModal();var m=document.createElement("div");m.id="admin-modal";m.className="yc-modal";var c=document.createElement("div");c.className="yc-card admin-card";c.innerHTML='<button class="yc-close" id="admin-close">×</button><div class="admin-head"><h3>🛡 Admin login</h3><span class="admin-mini">moderator access</span></div><div class="admin-note">Enter the moderator credentials to enable the extra controls. Admin mode lasts for this page session. For a real public app, move admin authentication to Firebase Auth/custom claims.</div><label class="fl">Username</label><input class="admin-field" id="admin-user" autocomplete="username" placeholder="Admin username"><label class="fl" style="display:block;margin-top:10px">Password</label><input class="admin-field" id="admin-pass" type="password" autocomplete="current-password" placeholder="Admin password"><div id="admin-login-err" class="emsg hidden" style="margin-top:9px"></div><div class="admin-actions"><button class="btn" id="admin-cancel">Cancel</button><button class="btn admin-gold" id="admin-login-btn">Unlock admin</button></div>';m.appendChild(c);document.body.appendChild(m);document.getElementById("admin-close").onclick=closeAdminModal;document.getElementById("admin-cancel").onclick=closeAdminModal;document.getElementById("admin-login-btn").onclick=adminLogin;document.getElementById("admin-pass").addEventListener("keydown",function(e){if(e.key==="Enter")adminLogin();});setTimeout(function(){document.getElementById("admin-user").focus();},40);}
-function adminLogin(){var u=(document.getElementById("admin-user")||{}).value||"",p=(document.getElementById("admin-pass")||{}).value||"",err=document.getElementById("admin-login-err");if(u==="zestyadmin67"&&p==="meowwoodhighismyname"){isAdmin=true;adminSetUI();closeAdminModal();showNotif("Admin mode enabled","success");if(document.getElementById("chat").classList.contains("active"))openAdminPanel();else showAdminWelcome();}else if(err){err.textContent="Invalid admin credentials.";err.classList.remove("hidden");}}
-function adminLogout(){isAdmin=false;if(adminBanUnsub){adminBanUnsub();adminBanUnsub=null;}adminSetUI();closeAdminModal();showNotif("Admin mode disabled","info");}
-function showAdminWelcome(){var m=document.createElement("div");m.className="yc-modal";var c=document.createElement("div");c.className="yc-card admin-card";c.innerHTML='<button class="yc-close">×</button><div class="admin-head"><h3>🛡 Admin mode enabled</h3></div><p class="statusmsg">Join a room normally. Once you enter, the 🛡 button in the chat header opens your moderator controls.</p><div class="admin-tools"><button class="btn admin-gold" id="admin-join">Join a room</button><button class="btn" id="admin-panel-home">Admin controls</button><button class="btn admin-danger" id="admin-logout">Log out</button></div>';m.appendChild(c);document.body.appendChild(m);c.querySelector(".yc-close").onclick=function(){m.remove();};document.getElementById("admin-join").onclick=function(){m.remove();startOnboard();};document.getElementById("admin-panel-home").onclick=function(){m.remove();openAdminPanel();};document.getElementById("admin-logout").onclick=function(){m.remove();adminLogout();};}
-function adminDeleteMessage(id){if(!isAdmin||!db)return;askConfirm("Admin: delete for everyone?","This will replace the message with the deleted-message tag for everyone.",function(){db.collection("messages").doc(id).update({deletedForAll:true,text:"",adminModified:true,adminModifiedBy:usr||"zestyadmin67"}).then(function(){showNotif("Message deleted for everyone","success");}).catch(function(e){console.error("[TYC] Admin delete failed:",e);showNotif("Admin delete failed: "+(e.code||"check console"),"error");});});}
-function adminAnnounce(){if(!isAdmin||!db||!rm)return;var text=prompt("Announcement for this room:");if(!text||!text.trim())return;db.collection("messages").add({text:text.trim(),room:rm+"::"+(subj||"general"),username:"Yapping Club Admin",avatar:"Crown",timestamp:firebase.firestore.FieldValue.serverTimestamp(),type:"system",admin:true}).then(function(){showNotif("Announcement sent","success");}).catch(function(e){showNotif("Announcement failed: "+(e.code||"check console"),"error");});}
-function adminClearRoom(){if(!isAdmin||!db||!rm)return;askConfirm("Admin: clear this channel?","This permanently marks every message in the current channel as deleted for everyone. This cannot be undone.",function(){var ch=isDM?dmId(usr,dmPartner):rm+"::"+(subj||"general");db.collection("messages").where("room","==",ch).limit(300).get().then(function(snap){var batch=db.batch();snap.forEach(function(d){batch.update(d.ref,{deletedForAll:true,text:"",adminModified:true,adminModifiedBy:usr||"zestyadmin67"});});return batch.commit();}).then(function(){showNotif("Channel cleared","success");}).catch(function(e){console.error(e);showNotif("Clear failed: "+(e.code||"check console"),"error");});});}
-function adminRemoveUser(username){if(!isAdmin||!db||!rm||!username||username===usr)return;askConfirm("Remove "+username+"?","This kicks the user out of the current room. They can join again later.",function(){db.collection("presence").where("room","==",rm).where("username","==",username).get().then(function(snap){var batch=db.batch();snap.forEach(function(d){batch.delete(d.ref);});return batch.commit();}).then(function(){showNotif(username+" was removed from the room","success");}).catch(function(e){console.error("[TYC] Admin remove failed:",e);showNotif("Remove failed: "+(e.code||"check console"),"error");});});}
-function watchAdminBan(){/* Persistent bans require Firebase Auth/custom claims; this build only supports live room kicks. */}
-function openAdminPanel(){if(!isAdmin){openAdminLogin();return;}var m=document.createElement("div");m.id="admin-modal";m.className="yc-modal";var c=document.createElement("div");c.className="yc-card admin-card";var room=rm||"No room";c.innerHTML='<button class="yc-close">×</button><div class="admin-head"><h3>🛡 Admin controls</h3><span class="admin-mini">'+esc(room)+'</span></div><div class="admin-note">Moderator tools for the current room.</div><div class="admin-tools"><button class="btn admin-gold" id="adm-ann">📢 Announce</button><button class="btn" id="adm-clear">🧹 Clear channel</button><button class="btn admin-danger" id="adm-out">Log out</button></div><h4 style="margin-top:18px">People in this room</h4><div id="admin-users"></div><div class="admin-note" style="margin-top:14px">Tip: in admin mode, open any message menu to edit, pin, or delete it regardless of who sent it.</div>';m.appendChild(c);document.body.appendChild(m);c.querySelector(".yc-close").onclick=function(){m.remove();};document.getElementById("adm-ann").onclick=adminAnnounce;document.getElementById("adm-clear").onclick=adminClearRoom;document.getElementById("adm-out").onclick=function(){m.remove();adminLogout();};var box=document.getElementById("admin-users"),users=allRoomUsers.slice().sort(function(a,b){return a.localeCompare(b);});if(!users.length)box.innerHTML='<div class="statusmsg">No classmates found.</div>';users.forEach(function(u){var row=document.createElement("div");row.className="admin-user"+(onlineUsers.indexOf(u)<0?" off":"");var dot=document.createElement("span");dot.className="au-dot";var nm=document.createElement("span");nm.className="au-name";nm.textContent=u+(u===usr?" (you)":"");row.appendChild(dot);row.appendChild(nm);if(u!==usr){var b=document.createElement("button");b.className="btn admin-danger";b.textContent="Remove";b.onclick=function(){adminRemoveUser(u);};row.appendChild(b);}box.appendChild(row);});}
+
+/* TEACHER PORTAL */
+var teacherFile=null;
+var TEACHER_PASSWORD="teacher@gwh.me";
+function openTeachers(){
+  document.getElementById("home-screen").classList.add("hidden");
+  document.getElementById("about-screen").classList.add("hidden");
+  document.getElementById("ob").classList.add("hidden");
+  document.getElementById("chat").style.opacity="0";document.getElementById("chat").style.pointerEvents="none";
+  document.getElementById("teachers-screen").classList.remove("hidden");
+  document.getElementById("teacher-lock").classList.remove("hidden");document.getElementById("teacher-app").classList.add("hidden");
+  setTimeout(function(){var p=document.getElementById("teacher-pw");if(p)p.focus();},100);
+}
+function closeTeachers(){document.getElementById("teachers-screen").classList.add("hidden");showHome();}
+function teacherLogin(){
+  var p=document.getElementById("teacher-pw"),e=document.getElementById("teacher-pw-err");
+  if(!p||p.value!==TEACHER_PASSWORD){e.textContent="Incorrect teacher password.";e.classList.remove("hidden");return;}
+  e.classList.add("hidden");document.getElementById("teacher-lock").classList.add("hidden");document.getElementById("teacher-app").classList.remove("hidden");
+}
+function teacherDragOver(e){e.preventDefault();document.getElementById("teacher-drop").classList.add("drag");}
+function teacherDragLeave(e){e.preventDefault();document.getElementById("teacher-drop").classList.remove("drag");}
+function teacherDrop(e){e.preventDefault();document.getElementById("teacher-drop").classList.remove("drag");var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)teacherSetFile(f);}
+function teacherFileSelected(input){var f=input.files&&input.files[0];if(f)teacherSetFile(f);input.value="";}
+var TEACHER_MAX_FILE_SIZE=5*1024*1024*1024;
+var teacherUploadTask=null;
+function teacherSetFile(f){
+  if(!f)return;
+  if(f.size>TEACHER_MAX_FILE_SIZE){showNotif("File too large — maximum is 5 GB","error");return;}
+  teacherFile=f;var p=document.getElementById("teacher-file-preview");p.classList.remove("hidden");p.innerHTML='<div class="teacher-file"><span>📄</span><span class="tfname"></span><span class="tfsz"></span><button title="Remove">×</button></div><div id="teacher-progress" style="margin-top:10px;display:none"><div style="height:7px;background:var(--inp);border-radius:99px;overflow:hidden"><div id="teacher-progress-fill" style="height:100%;width:0%;background:var(--acc);transition:width .15s"></div></div><div id="teacher-progress-text" style="font:10px var(--fm);color:var(--tm);margin-top:5px">Preparing upload…</div></div>';
+  p.querySelector(".tfname").textContent=f.name;p.querySelector(".tfsz").textContent=formatBytes(f.size);p.querySelector("button").onclick=function(){teacherClearFile();};
+  document.getElementById("teacher-publish").disabled=false;
+}
+function teacherClearFile(){
+  if(teacherUploadTask){try{teacherUploadTask.cancel();}catch(e){}teacherUploadTask=null;}
+  teacherFile=null;document.getElementById("teacher-file-preview").classList.add("hidden");document.getElementById("teacher-file-preview").innerHTML="";document.getElementById("teacher-publish").disabled=true;
+}
+function teacherPublish(){
+  if(!teacherFile||!db||!st)return;
+  var target=document.getElementById("teacher-target").value,file=teacherFile;
+  askConfirm("Publish this file?","This will send "+file.name+" ("+formatBytes(file.size)+") to Class "+target+" in #announcements.",function(){teacherDoPublish(target,file);});
+}
+function teacherDoPublish(target,file){
+  var btn=document.getElementById("teacher-publish"),progress=document.getElementById("teacher-progress"),fill=document.getElementById("teacher-progress-fill"),pt=document.getElementById("teacher-progress-text");
+  btn.disabled=true;btn.textContent="Uploading…";if(progress)progress.style.display="block";
+  var safeName=Date.now()+"_"+file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+  var ref=st.ref().child("teacher-files").child(target).child(safeName);
+  // Firebase Storage put() uses a resumable upload internally for large files.
+  // We keep the UploadTask so the upload can be cancelled cleanly if needed.
+  teacherUploadTask=ref.put(file,{contentType:file.type||"application/octet-stream",cacheControl:"public,max-age=3600"});
+  teacherUploadTask.on("state_changed",function(snap){
+    var pct=snap.totalBytes?Math.round(snap.bytesTransferred/snap.totalBytes*100):0;
+    if(fill)fill.style.width=pct+"%";
+    if(pt)pt.textContent="Uploaded "+formatBytes(snap.bytesTransferred)+" / "+formatBytes(snap.totalBytes)+" ("+pct+"%)";
+    btn.textContent="Uploading "+pct+"%…";
+  },function(err){
+    console.error(err);teacherUploadTask=null;
+    if(err&&err.code==="storage/canceled")showNotif("Upload cancelled","info");else showNotif("Upload failed: "+(err.code||"check Firebase Storage rules"),"error");
+    btn.disabled=false;btn.textContent="Publish file";if(progress)progress.style.display="none";
+  },function(){
+    teacherUploadTask.snapshot.ref.getDownloadURL().then(function(url){
+      return db.collection("messages").add({username:"Teacher",avatar:"Book",avatarUrl:null,text:"📎 "+file.name,file:{name:file.name,size:file.size,type:file.type||"application/octet-stream",url:url},fileName:file.name,fileUrl:url,fileType:"file",room:target+"::announcements",timestamp:firebase.firestore.FieldValue.serverTimestamp(),type:"teacher-file",teacherPublished:true});
+    }).then(function(){
+      teacherUploadTask=null;showNotif("File published to Class "+target+" ✓","success");teacherClearFile();btn.textContent="Publish file";
+    }).catch(function(err){console.error(err);teacherUploadTask=null;showNotif("Publish failed: "+(err.code||"check Firebase rules"),"error");btn.disabled=false;btn.textContent="Publish file";});
+  });
+}
 
 /* INIT */
 function init(){
   loadTheme();
-  adminSetUI();
   showHome();
   try{
     firebase.initializeApp(FC);
@@ -949,6 +1045,17 @@ function closeDD(){
 function filterDD(v){buildDD(v);}
 function buildDD(filter){
   var list=document.getElementById("ddlist");if(!list)return;list.innerHTML="";
+  filter=(filter||"").trim();
+  /* Teacher Portal is intentionally a special entry, not a student class room.
+     It is shown in the same class picker so typing "Teachers" actually finds it. */
+  var teacherShown=(!filter || "teachers".indexOf(filter.toLowerCase())>=0);
+  if(teacherShown){
+    var tl=document.createElement("div");tl.className="ddgrade";tl.textContent="Staff";list.appendChild(tl);
+    var ti=document.createElement("div");ti.className="ddi teacher-ddi";
+    ti.innerHTML='<div class="dddot" style="background:#f5c842"></div><span>Teachers</span><span style="margin-left:auto;color:var(--tm);font-size:11px">Portal</span>';
+    ti.onclick=function(){closeDD();openTeachers();};
+    list.appendChild(ti);
+  }
   var grades={};
   Object.keys(ROOMS).forEach(function(r){
     if(filter&&r.toLowerCase().indexOf(filter.toLowerCase())<0)return;
@@ -956,7 +1063,10 @@ function buildDD(filter){
     if(!grades[g])grades[g]=[];
     grades[g].push(r);
   });
-  if(!Object.keys(grades).length){list.innerHTML='<div style="padding:12px;text-align:center;color:var(--tg);font-size:12px">No sections found</div>';return;}
+  if(!Object.keys(grades).length){
+    if(!teacherShown)list.innerHTML='<div style="padding:12px;text-align:center;color:var(--tg);font-size:12px">No sections found</div>';
+    return;
+  }
   Object.keys(grades).forEach(function(g){
     var lbl=document.createElement("div");lbl.className="ddgrade";lbl.textContent="Grade "+g;list.appendChild(lbl);
     grades[g].forEach(function(r){
@@ -1065,9 +1175,7 @@ function obFinish(){
 /* ENTER ROOM */
 function enterRoom(username,room,color,avatar,avatarUrl){
   rm=room;usr=username;usrColor=color;usrAv=avatar||"Fox";usrAvUrl=avatarUrl||null;
-  roomKey=room+"::general";
   subj="general";isDM=false;dmPartner=null;
-  adminSetUI();roomKey=room+"::general";
   document.getElementById("hdr-room").textContent=room;
   document.getElementById("hdr-title").textContent="Class "+room+" - #general";
   var sf=document.getElementById("selfav");
@@ -1076,7 +1184,7 @@ function enterRoom(username,room,color,avatar,avatarUrl){
   document.getElementById("selfnm").textContent=username;
   document.getElementById("selfrm").textContent="Room "+room;
   var cs=document.getElementById("chat");cs.style.opacity="1";cs.style.pointerEvents="all";cs.classList.add("active");
-  buildChs();buildDMs();setupPres();subPres();watchAdminBan();
+  buildChs();buildDMs();setupPres();subPres();
   subChannel(room+"::general");
   sysMsg(username+" joined the room",room+"::general");
   showNotif("Joined "+room+" #general as "+username,"success");
@@ -1137,7 +1245,6 @@ function dmId(a,b){return[a,b].sort().join("::dm::");}
 
 /* MESSAGES */
 function subChannel(ch){
-  roomKey=ch;
   refreshMentionUsers();
   loadDraft();updateDraftCounter();
   watchTyping();
@@ -1146,19 +1253,11 @@ function subChannel(ch){
 
   console.log("[TYC] Starting live message listener:",ch);
 
-  /*
-   * HISTORY-SAFE LISTENER
-   * ---------------------
-   * Do NOT limit the Firestore query here. A newly joined browser must be
-   * able to receive the complete room history, not just the latest N docs.
-   * We also avoid ordering in Firestore and sort in JavaScript. This means
-   * older messages are not silently excluded and this listener does not
-   * depend on the room+timestamp composite index.
-   */
   msgsUnsub=db.collection("messages")
     .where("room","==",ch)
+    .orderBy("timestamp","asc")
     .onSnapshot(function(snap){
-      console.log("[TYC] Live update:",ch,"messages returned:",snap.size,"(complete room-history query)");
+      console.log("[TYC] Live update:",ch,"messages:",snap.size);
 
       /*
        * Rebuild the visible list from Firestore on every snapshot.
@@ -1178,24 +1277,6 @@ function subChannel(ch){
       snap.forEach(function(doc){
         var d=Object.assign({id:doc.id},doc.data());
         allMsgs.push(d);
-      });
-
-      function msgTime(d){
-        var t=d&&d.timestamp;
-        if(t && typeof t.toMillis==="function") return t.toMillis();
-        if(t && typeof t.seconds==="number") return t.seconds*1000+(t.nanoseconds||0)/1000000;
-        if(typeof t==="number") return t;
-        if(typeof t==="string"){
-          var n=Date.parse(t);
-          return isNaN(n)?0:n;
-        }
-        return 0;
-      }
-
-      allMsgs.sort(function(a,b){
-        var ta=msgTime(a),tb=msgTime(b);
-        if(ta!==tb) return ta-tb;
-        return String(a.id||"").localeCompare(String(b.id||""));
       });
 
       allMsgs.forEach(function(d,i){
@@ -1279,7 +1360,9 @@ function renderMsg(d,idx,container){
     renderAttachment(d,wrap);
   }else{
     var bubble=document.createElement("div");bubble.className="mbub";
-    if(d.type==="gif"){
+    if(d.type==="image"||d.imageUrl){
+      renderChatImage(d,bubble);
+    }else if(d.type==="gif"){
       var img=document.createElement("img");img.src=d.gifUrl;img.className="mimg";img.alt="GIF";
       img.onclick=function(){window.open(d.gifUrl,"_blank");};
       bubble.appendChild(img);
@@ -1326,7 +1409,7 @@ function renderMsg(d,idx,container){
   });
   acts.appendChild(pinBtn);
 
-  if((isOwn||isAdmin)&&!d.deletedForAll){
+  if(isOwn&&!d.deletedForAll){
     var editBtn=document.createElement("button");
     editBtn.className="mab";
     editBtn.title="Edit";
@@ -1385,6 +1468,8 @@ function tryPollCommand(text){
 }
 function sendMsg(){
   if(editId){saveEdit();return;}
+  if(imgUploading){showNotif("Image is still uploading...","error");return;}
+  if(pendingImage){sendImageMessage();return;}
   if(pendingFile){sendFile(pendingFile);clearFP();return;}
   var input=document.getElementById("mi");var text=input.value.trim();
   if(!text||text.length>MAX_MSG)return;
@@ -1395,6 +1480,7 @@ function sendMsg(){
   var data={username:usr,avatar:usrAv,avatarUrl:usrAvUrl,text:text,room:ch,timestamp:firebase.firestore.FieldValue.serverTimestamp(),type:"chat"};
   if(replyTo){data.replyTo=replyTo.id;data.replyToText=(replyTo.text||"").substring(0,80);cancelReply();}
   if(!db){showNotif("Firebase not configured","error");return;}
+  ycPendingWrites++;
   db.collection("messages").add(data).then(function(ref){
     // Render immediately in this browser instead of waiting for the
     // Firestore listener to round-trip the new document.
@@ -1410,6 +1496,8 @@ function sendMsg(){
     input.value=text;
     autoResize();
     updCC(text);
+  }).finally(function(){
+    ycPendingWrites=Math.max(0,ycPendingWrites-1);
   });
 }
 function sysMsg(text,ch){
@@ -1524,7 +1612,7 @@ function getRoomRead(){
 /* NEXT 5D — MENTION AUTOCOMPLETE */
 var mentionUsers=[];
 function refreshMentionUsers(){
-  if(!db)return;
+  if(!db||!roomKey)return;
   db.collection("presence").limit(100).get().then(function(s){
     mentionUsers=[];s.forEach(function(doc){var d=doc.data()||{};if(d.username)mentionUsers.push(d.username);});
     mentionUsers=[...new Set(mentionUsers)].sort(function(a,b){return a.localeCompare(b);});
@@ -2345,20 +2433,17 @@ function showCtx(e,id,isOwn){
     menu.appendChild(item);
   }
 
-  if(isOwn||isAdmin){
-    addCtxItem(isAdmin&&!isOwn?"Admin: Edit":"Edit","",function(){startEdit(id);});
+  if(isOwn){
+    addCtxItem("Edit","",function(){startEdit(id);});
   }
-  addCtxItem(isAdmin?"Admin: Pin / Unpin":"Pin / Unpin","gold",function(){togglePin(id);});
+  addCtxItem("Pin / Unpin","gold",function(){togglePin(id);});
   addCtxItem("Reply","",function(){setReply(getMsgById(id));});
 
   var sep=document.createElement("div");
   sep.className="ctxsep";
   menu.appendChild(sep);
 
-  if(isAdmin){
-    addCtxItem("Delete for me","danger",function(){deleteForMe(id);});
-    addCtxItem("Admin: Delete for everyone","danger",function(){adminDeleteMessage(id);});
-  }else if(isOwn){
+  if(isOwn){
     addCtxItem("Delete for me","danger",function(){deleteForMe(id);});
     addCtxItem("Delete for everyone","danger",function(){deleteForAll(id);});
   }else{
@@ -2434,8 +2519,26 @@ function renderTyping(users){
 function startTyp(){if(!isTyp){isTyp=true;updPres(true);}clearTimeout(typTimer);typTimer=setTimeout(stopTyp,TYPING_TO);}
 function stopTyp(){if(isTyp){isTyp=false;updPres(false);}clearTimeout(typTimer);}
 
+
+function waitForPendingWrites(timeout){
+  timeout=timeout||5000;
+  var started=Date.now();
+  return new Promise(function(resolve){
+    (function check(){
+      if(ycPendingWrites<=0 || Date.now()-started>=timeout){resolve();return;}
+      setTimeout(check,50);
+    })();
+  });
+}
+
 /* LEAVE */
-function _leaveRoomNow(){
+function leaveRoom(){
+  if(ycPendingWrites>0){
+    showNotif("Saving your last message…","info");
+    waitForPendingWrites(5000).then(function(){leaveRoom();});
+    return;
+  }
+
   sysMsg(usr+" left the room",rm+"::general");
   if(msgsUnsub)msgsUnsub();if(presUnsub)presUnsub();clearInterval(hbInt);
   if(db&&presId)db.collection("presence").doc(presId).delete().catch(function(){});
@@ -2446,25 +2549,6 @@ function _leaveRoomNow(){
   var cs=document.getElementById("chat");cs.style.opacity="0";cs.style.pointerEvents="none";cs.classList.remove("active");
   showHome();
 }
-
-function leaveRoom(){
-  if(pendingMessageWrites>0){
-    showNotif("Saving your message…","info");
-    var tries=0;
-    clearInterval(pendingLeaveTimer);
-    pendingLeaveTimer=setInterval(function(){
-      tries++;
-      if(pendingMessageWrites<=0 || tries>=50){
-        clearInterval(pendingLeaveTimer);
-        pendingLeaveTimer=null;
-        _leaveRoomNow();
-      }
-    },100);
-    return;
-  }
-  _leaveRoomNow();
-}
-
 function clearView(){
   document.getElementById("mc").innerHTML='<div class="msys"><span>View cleared locally</span></div>';
   showNotif("View cleared","info");
@@ -2490,7 +2574,7 @@ function onIK(e){
 function onPaste(e){
   var items=e.clipboardData&&e.clipboardData.items;if(!items)return;
   for(var i=0;i<items.length;i++){
-    if(items[i].type.indexOf("image")===0){e.preventDefault();var f=items[i].getAsFile();if(f)setFP(f);return;}
+    if(items[i].type.indexOf("image")===0){e.preventDefault();var f=items[i].getAsFile();if(f)setImage(f);return;}
   }
 }
 function autoResize(){var i=document.getElementById("mi");i.style.height="22px";i.style.height=Math.min(i.scrollHeight,110)+"px";}
@@ -2523,16 +2607,110 @@ function chkMention(val){
 }
 function hideMen(){var s=document.getElementById("msug");s.classList.add("hidden");s.innerHTML="";}
 
+/* IMAGE RENDER */
+function renderChatImage(d,bubble){
+  var holder=document.createElement("div");holder.className="mimgwrap";
+  var load=document.createElement("div");load.className="mimgload";load.textContent="Loading image...";
+  holder.appendChild(load);
+  var img=document.createElement("img");
+  img.className="mimg";img.loading="lazy";img.alt=d.text||"Image";
+  if(d.imageWidth&&d.imageHeight)img.style.aspectRatio=d.imageWidth+" / "+d.imageHeight;
+  img.onload=function(){load.remove();};
+  img.onerror=function(){img.remove();load.className="mimgload err";load.textContent="Image could not be loaded";};
+  img.onclick=function(){openLightbox(d.imageUrl);};
+  img.src=d.imageUrl;
+  holder.appendChild(img);
+  bubble.appendChild(holder);
+  if(d.text){
+    var cap=document.createElement("div");cap.className="mimgcap";
+    cap.innerHTML=esc(d.text).replace(/@(\w[\w \-]{0,22})/g,function(_,m){return'<span class="mention">@'+m+'</span>';});
+    bubble.appendChild(cap);
+  }
+}
+
 /* FILE */
 function onFileSelected(input){var f=input.files[0];if(f)setFP(f);input.value="";}
+function onImgSelected(input){var f=input.files[0];if(f)setImage(f);input.value="";}
+function isImageFile(f){return !!f&&typeof f.type==="string"&&f.type.indexOf("image/")===0;}
+function setImage(f){
+  if(!isImageFile(f)||CLOUDINARY.allowed.indexOf(f.type.toLowerCase())<0){
+    showNotif("Only PNG, JPG, WEBP or GIF images are allowed","error");return;
+  }
+  if(f.size>CLOUDINARY.maxBytes){
+    showNotif("Image too large (max "+Math.round(CLOUDINARY.maxBytes/1048576)+"MB)","error");return;
+  }
+  if(pendingImagePreview){try{URL.revokeObjectURL(pendingImagePreview);}catch(e){}}
+  pendingFile=null;
+  pendingImage=f;pendingImagePreview=URL.createObjectURL(f);
+  drawImagePreview("");
+  var mi=document.getElementById("mi");if(mi)mi.focus();
+}
+function drawImagePreview(status,pct,isError){
+  var bar=document.getElementById("fpbar");if(!bar)return;
+  bar.className="fpbar imgfp";
+  var st=status?'<span class="fpst'+(isError?" err":"")+'">'+esc(status)+"</span>":"";
+  var pg=(typeof pct==="number")?'<span class="fppg"><span class="fppgf" style="width:'+pct+'%"></span></span>':"";
+  bar.innerHTML='<img class="fpthumb" src="'+pendingImagePreview+'" alt="Selected image"/>'+
+    '<span class="fpnm">'+esc(pendingImage?pendingImage.name||"image":"image")+'</span>'+
+    '<span class="fpsz">'+(pendingImage?(pendingImage.size/1024).toFixed(1):"0")+'KB</span>'+st+pg+
+    '<button class="fprm" title="Remove image" onclick="clearImage()">X</button>';
+}
+function clearImage(){
+  if(imgUploading){showNotif("Please wait, image is still uploading","error");return;}
+  if(pendingImagePreview){try{URL.revokeObjectURL(pendingImagePreview);}catch(e){}}
+  pendingImage=null;pendingImagePreview=null;
+  var b=document.getElementById("fpbar");b.classList.add("hidden");b.innerHTML="";
+}
 function setFP(f){
+  if(isImageFile(f)){setImage(f);return;}
   pendingFile=f;
-  var ext=f.name.split(".").pop().toLowerCase();
-  var isImg=["jpg","jpeg","png","gif","webp"].indexOf(ext)>=0||f.type.indexOf("image")===0;
   var bar=document.getElementById("fpbar");bar.className="fpbar";
-  bar.innerHTML='<span class="fpic">'+(isImg?"img":"file")+'</span><span class="fpnm">'+esc(f.name)+'</span><span class="fpsz">'+(f.size/1024).toFixed(1)+'KB</span><button class="fprm" onclick="clearFP()">X</button>';
+  bar.innerHTML='<span class="fpic">file</span><span class="fpnm">'+esc(f.name)+'</span><span class="fpsz">'+(f.size/1024).toFixed(1)+'KB</span><button class="fprm" onclick="clearFP()">X</button>';
 }
 function clearFP(){pendingFile=null;var b=document.getElementById("fpbar");b.classList.add("hidden");b.innerHTML="";}
+function sendImageMessage(){
+  if(!db){showNotif("Firebase not configured","error");return;}
+  if(imgUploading)return;
+  var file=pendingImage;if(!file)return;
+  var input=document.getElementById("mi");
+  var caption=input?input.value.trim():"";
+  imgUploading=true;
+  var send=document.querySelector(".bsend");if(send)send.disabled=true;
+  drawImagePreview("Uploading image...",0);
+  cldUpload(file,function(p){drawImagePreview("Uploading image... "+p+"%",p);}).then(function(r){
+    var ch=isDM?dmId(usr,dmPartner):rm+"::"+subj;
+    var data={username:usr,avatar:usrAv,avatarUrl:usrAvUrl,text:caption,room:ch,
+      timestamp:firebase.firestore.FieldValue.serverTimestamp(),type:"image",
+      imageUrl:r.secure_url,imagePublicId:r.public_id,imageWidth:r.width,imageHeight:r.height,imageFormat:r.format};
+    if(replyTo){data.replyTo=replyTo.id;data.replyToText=(replyTo.text||"").substring(0,80);cancelReply();}
+    ycPendingWrites++;
+    return db.collection("messages").add(data).then(function(ref){
+      if(!rendered[ref.id]){
+        var localData=Object.assign({id:ref.id},data,{timestamp:new Date()});
+        rendered[ref.id]=true;allMsgs.push(localData);renderMsg(localData,allMsgs.length-1);
+      }
+      lastSend=Date.now();
+      if(input){input.value="";autoResize();updCC("");}
+      stopTyp();
+      imgUploading=false;clearImage();
+    }).finally(function(){ycPendingWrites=Math.max(0,ycPendingWrites-1);});
+  }).catch(function(err){
+    console.error("[TYC] image send failed:",err);
+    imgUploading=false;
+    drawImagePreview((err&&err.message)||"Upload failed - press Send to retry",null,true);
+    showNotif((err&&err.message)||"Image upload failed","error");
+  }).finally(function(){
+    imgUploading=false;
+    var s2=document.querySelector(".bsend");if(s2)s2.disabled=false;
+  });
+}
+function openLightbox(url){
+  var ex=document.getElementById("tyc-lb");if(ex)ex.remove();
+  var d=document.createElement("div");d.id="tyc-lb";d.className="tyclb";
+  d.innerHTML='<img src="'+url+'" alt="Image"/>';
+  d.onclick=function(){d.remove();};
+  document.body.appendChild(d);
+}
 function sendFile(f){
   if(!db)return;
   if(f.size>2097152){showNotif("File too large (max 2MB)","error");return;}
