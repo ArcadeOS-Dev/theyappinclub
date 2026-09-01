@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>The Yapping Club</title>
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -775,6 +776,9 @@ var TENOR="AIzaSyAyimkuYQYF_y7VMae0eSCgCFJpBt3TPSE";
 /* STATE */
 var db=null,st=null;
 var ycPendingWrites=0;
+/* Current chat/channel key used by chat features such as typing, drafts,
+   unread counts, wallpaper, mentions and reconnects. */
+var roomKey=null;
 var rm=null,usr=null,usrColor=null,usrAv="Fox",usrAvUrl=null;
 var subj="general",isDM=false,dmPartner=null;
 var msgsUnsub=null,presUnsub=null,allRoomUsers=[];
@@ -793,10 +797,8 @@ var pendingFile=null,avFileData=null;
    the secret API key is never used here. Fallback lets the file work standalone (file:// or any host). */
 var CLOUDINARY={cloudName:"haacagp8",uploadPreset:"tyc_images",folder:"tyc/images",maxBytes:10*1024*1024,
   allowed:["image/png","image/jpeg","image/jpg","image/webp","image/gif"]};
-try{fetch("/api/public/tyc-config").then(function(r){return r.ok?r.json():null;}).then(function(c){
-  if(c&&c.cloudName)CLOUDINARY.cloudName=c.cloudName;
-  if(c&&c.uploadPreset)CLOUDINARY.uploadPreset=c.uploadPreset;
-}).catch(function(){});}catch(e){}
+/* Static-hosting safe: the public Cloudinary values above are the fallback
+   configuration, so don't request a non-existent /api endpoint. */
 var pendingImage=null,pendingImagePreview=null,imgUploading=false;
 function cldUpload(file,onProgress){
   return new Promise(function(res,rej){
@@ -1245,6 +1247,7 @@ function dmId(a,b){return[a,b].sort().join("::dm::");}
 
 /* MESSAGES */
 function subChannel(ch){
+  roomKey=ch;
   refreshMentionUsers();
   loadDraft();updateDraftCounter();
   watchTyping();
@@ -1612,7 +1615,7 @@ function getRoomRead(){
 /* NEXT 5D — MENTION AUTOCOMPLETE */
 var mentionUsers=[];
 function refreshMentionUsers(){
-  if(!db||!roomKey)return;
+  if(!db||!rm)return;
   db.collection("presence").limit(100).get().then(function(s){
     mentionUsers=[];s.forEach(function(doc){var d=doc.data()||{};if(d.username)mentionUsers.push(d.username);});
     mentionUsers=[...new Set(mentionUsers)].sort(function(a,b){return a.localeCompare(b);});
